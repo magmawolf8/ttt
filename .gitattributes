@@ -3,3 +3,5 @@
 *.jpg binary
 *.mp4 binary
 *.docx binary
+# Evidence hashes refer to original bytes, including their line endings.
+/docs/evidence/*.json -text whitespace=cr-at-eol

@@ -1,0 +1,31 @@
+{
+  "title": "Board-game robotics",
+  "subtitle": "UR7e · MuJoCo · pi0.5",
+  "groups": [
+    {
+      "title": "Project",
+      "pages": [
+        {"source": "index.md", "label": "Overview", "description": "A frozen-policy pipeline for UR7e card manipulation in MuJoCo."},
+        {"source": "setup.md", "label": "Setup & reproduction", "description": "Run the existing environment or reconstruct the GPU simulation pipeline."},
+        {"source": "architecture.md", "label": "Architecture", "description": "Simulation mechanics, policy interfaces, information boundaries and scoring."},
+        {"source": "results.md", "label": "Results & video", "description": "Controlled development results, the comparison video and limitations."},
+        {"source": "evidence/index.md", "label": "Included evidence", "description": "Selected reports and media with original paths and content hashes."}
+      ]
+    },
+    {
+      "title": "Experiment archive",
+      "pages": [
+        {"source": "archive/seed-audit.md", "label": "Seed & adaptation audit", "description": "Rendering, sampling, adapter and numerical checks from October 2026."},
+        {"source": "archive/unassisted-seeds.md", "label": "Unassisted seed runs", "description": "Removal of auxiliary control and the original two-seed batch."},
+        {"source": "archive/initial-investigation.md", "label": "Initial investigation", "description": "Earlier CPU/GPU and adapter development experiments."},
+        {"source": "archive/hybrid-control.md", "label": "Archived hybrid control", "description": "Historical RGB centering and scripted completion, since removed."}
+      ]
+    },
+    {
+      "title": "Contributing",
+      "pages": [
+        {"source": "publishing.md", "label": "Maintain & publish docs", "description": "Build the static site and enable GitHub Pages when ready."}
+      ]
+    }
+  ]
+}
