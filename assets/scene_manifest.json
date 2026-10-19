@@ -1,0 +1,15 @@
+{
+  "robot": "UR7e",
+  "description_revision": "d4042c1f5123c86645cc5dbd650b4f461f697ee9",
+  "physics_hz": 500,
+  "control_hz": 20,
+  "card_dimensions_m": [
+    0.063,
+    0.088,
+    0.0003
+  ],
+  "card_mass_kg": 0.0018,
+  "cup_diameter_m": 0.018,
+  "suction_model": "conditional weld, finite force and displacement break",
+  "mesh_note": "UR7e manufacturer config explicitly shares UR5e meshes"
+}

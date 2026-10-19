@@ -1,0 +1,92 @@
+<mujoco model="UR7e card manipulation">
+  <compiler angle="radian" autolimits="true" meshdir="../vendor/ur_description/meshes/ur5e/collision" />
+  <option timestep="0.002" integrator="implicitfast" cone="elliptic" iterations="80" gravity="0 0 -9.81" />
+  <default>
+    <joint armature="0.1" damping="1" />
+    <geom friction="0.8 0.01 0.0001" solref="0.01 1" solimp="0.95 0.99 0.0001" margin="0.00005" />
+  </default>
+  <visual>
+    <global offwidth="1280" offheight="720" />
+    <headlight ambient="0.5 0.5 0.5" diffuse="0.6 0.6 0.6" />
+  </visual>
+  <asset>
+    <texture name="card_back" type="2d" file="card_back.png" />
+    <material name="card_mat" texture="card_back" texuniform="false" reflectance="0.05" />
+    <mesh name="base_mesh" file="base.stl" />
+    <mesh name="shoulder_mesh" file="shoulder.stl" />
+    <mesh name="upper_arm_mesh" file="upperarm.stl" />
+    <mesh name="forearm_mesh" file="forearm.stl" />
+    <mesh name="wrist_1_mesh" file="wrist1.stl" />
+    <mesh name="wrist_2_mesh" file="wrist2.stl" />
+    <mesh name="wrist_3_mesh" file="wrist3.stl" />
+  </asset>
+  <worldbody>
+    <light pos="0 -0.5 2" dir="0 0 -1" diffuse="0.9 0.9 0.9" />
+    <geom name="floor" type="plane" size="2 2 0.1" pos="0 0 -0.8" rgba="0.19 0.20 0.23 1" />
+    <geom name="table" type="box" pos="0.35 0 -0.035" size="0.65 0.5 0.035" rgba="0.38 0.28 0.18 1" />
+    <camera name="external" pos="1.15 -1.05 1.15" xyaxes="0.795431720032 0.606043215263 -0 -0.377269552836 0.495166288098 0.782609756925" fovy="48" />
+    <body name="base" quat="0 0 0 1">
+      <geom name="base_collision" type="mesh" mesh="base_mesh" pos="0 0 0" quat="6.12303176911e-17 0 0 1" rgba="0.75 0.77 0.78 1" />
+      <body name="shoulder_link" pos="0 0 0.1625" quat="1 0 0 0">
+        <joint name="shoulder_pan_joint" axis="0 0 1" range="-6.28318530718 6.28318530718" />
+        <inertial pos="0 -0.00193 -0.02561" mass="3.761" fullinertia="0.0070021 0.00657286 0.00648091 1.053e-05 7.3e-07 -0.00049994" />
+        <geom name="shoulder_collision" type="mesh" mesh="shoulder_mesh" pos="0 0 0" quat="6.12303176911e-17 0 0 1" rgba="0.45 0.66 0.8 1" />
+        <body name="upper_arm_link" pos="0 0 0" quat="0.707106781114 0.707106781259 0 0">
+          <joint name="shoulder_lift_joint" axis="0 0 1" range="-6.28318530718 6.28318530718" />
+          <inertial pos="-0.2125 0 0.11336" mass="8.058" fullinertia="0.01505885 0.33388086 0.33247207 -5.4e-05 5.63e-06 -1.81e-06" />
+          <geom name="upper_arm_collision" type="mesh" mesh="upper_arm_mesh" pos="0 0 0.138" quat="0.5 0.5 -0.5 -0.5" rgba="0.75 0.77 0.78 1" />
+          <body name="forearm_link" pos="-0.425 0 0" quat="1 0 0 0">
+            <joint name="elbow_joint" axis="0 0 1" range="-3.14159265359 3.14159265359" />
+            <inertial pos="-0.2422 0 0.0265" mass="2.846" fullinertia="0.00399632 0.07879254 0.0784851 -1.365e-05 0.00137272 -6.6e-06" />
+            <geom name="forearm_collision" type="mesh" mesh="forearm_mesh" pos="0 0 0.007" quat="0.5 0.5 -0.5 -0.5" rgba="0.75 0.77 0.78 1" />
+            <body name="wrist_1_link" pos="-0.3922 0 0.1333" quat="1 0 0 0">
+              <joint name="wrist_1_joint" axis="0 0 1" range="-6.28318530718 6.28318530718" />
+              <inertial pos="0 -0.01634 -0.0018" mass="1.37" fullinertia="0.00165491 0.00126279 0.00135962 4.38e-06 -2.82e-06 -0.00010157" />
+              <geom name="wrist_1_collision" type="mesh" mesh="wrist_1_mesh" pos="0 0 -0.127" quat="0.707106781187 0.707106781187 0 0" rgba="0.45 0.66 0.8 1" />
+              <body name="wrist_2_link" pos="0 -0.0997 -2.0448811823e-11" quat="0.707106781114 0.707106781259 0 0">
+                <joint name="wrist_2_joint" axis="0 0 1" range="-6.28318530718 6.28318530718" />
+                <inertial pos="0 0.01634 -0.0018" mass="1.3" fullinertia="0.00135617 0.00096614 0.00127827 4.44e-06 2.74e-06 5.048e-05" />
+                <geom name="wrist_2_collision" type="mesh" mesh="wrist_2_mesh" pos="0 0 -0.0997" quat="1 0 0 0" rgba="0.45 0.66 0.8 1" />
+                <body name="wrist_3_link" pos="0 0.0996 -2.04283014801e-11" quat="0.707106781114 -0.707106781259 8.65927457072e-17 8.88023802495e-27">
+                  <joint name="wrist_3_joint" axis="0 0 1" range="-6.28318530718 6.28318530718" />
+                  <inertial pos="0 0 -0.001159" mass="0.365" fullinertia="0.00018694 0.00018908 0.00025756 6e-08 -1.7e-07 -9.2e-07" />
+                  <geom name="wrist_3_collision" type="mesh" mesh="wrist_3_mesh" pos="0 -0.0005 -0.0989" quat="0.707106781187 0.707106781187 0 0" rgba="0.75 0.77 0.78 1" />
+                  <body name="cup" pos="0 0 0.055">
+                    <geom name="cup_stem" type="cylinder" size="0.009 0.025" pos="0 0 -0.025" mass="0.07" rgba="0.25 0.25 0.28 1" />
+                    <geom name="cup_contact" type="cylinder" size="0.009 0.002" mass="0.01" rgba="0.12 0.12 0.14 1" friction="1 0.01 0.0001" />
+                    <site name="tcp" pos="0 0 0.002" size="0.002" rgba="1 0.3 0.2 1" />
+                    <camera name="wrist" pos="0.045 0 -0.025" xyaxes="1 0 0 0 -1 0" fovy="75" />
+                  </body>
+                </body>
+              </body>
+            </body>
+          </body>
+        </body>
+      </body>
+    </body>
+    <body name="card" pos="0.45 0 0.0002">
+      <freejoint name="card_free" />
+      <geom name="card_geom" type="box" size="0.0315 0.044 0.00015" mass="0.0018" material="card_mat" condim="4" />
+    </body>
+  </worldbody>
+  <actuator>
+    <position name="shoulder_pan_joint_servo" joint="shoulder_pan_joint" kp="2000" kv="200" ctrlrange="-6.28318530718 6.28318530718" forcerange="-150 150" />
+    <position name="shoulder_lift_joint_servo" joint="shoulder_lift_joint" kp="2000" kv="200" ctrlrange="-6.28318530718 6.28318530718" forcerange="-150 150" />
+    <position name="elbow_joint_servo" joint="elbow_joint" kp="2000" kv="200" ctrlrange="-3.14159265359 3.14159265359" forcerange="-150 150" />
+    <position name="wrist_1_joint_servo" joint="wrist_1_joint" kp="500" kv="40" ctrlrange="-6.28318530718 6.28318530718" forcerange="-28 28" />
+    <position name="wrist_2_joint_servo" joint="wrist_2_joint" kp="500" kv="40" ctrlrange="-6.28318530718 6.28318530718" forcerange="-28 28" />
+    <position name="wrist_3_joint_servo" joint="wrist_3_joint" kp="500" kv="40" ctrlrange="-6.28318530718 6.28318530718" forcerange="-28 28" />
+  </actuator>
+  <equality>
+    <weld name="suction_weld" body1="cup" body2="card" active="false" solref="0.006 1" solimp="0.95 0.99 0.001" torquescale="0.02" />
+  </equality>
+  <contact>
+    <exclude body1="base" body2="shoulder_link" />
+    <exclude body1="shoulder_link" body2="upper_arm_link" />
+    <exclude body1="upper_arm_link" body2="forearm_link" />
+    <exclude body1="forearm_link" body2="wrist_1_link" />
+    <exclude body1="wrist_1_link" body2="wrist_2_link" />
+    <exclude body1="wrist_2_link" body2="wrist_3_link" />
+    <exclude body1="wrist_3_link" body2="cup" />
+  </contact>
+</mujoco>

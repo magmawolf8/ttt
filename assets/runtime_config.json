@@ -1,0 +1,10 @@
+{
+  "suction": {
+    "cup_radius_m": 0.009,
+    "normal_tolerance_degrees": 12.0,
+    "relative_speed_limit_m_s": 0.04,
+    "contact_dwell_s": 0.04,
+    "maximum_force_n": 2.0,
+    "maximum_constraint_error_m": 0.008
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "legacy": {
+    "image_transform": "native",
+    "state_translation_m": [-0.45, 0, 0.8],
+    "translation_limit_m_per_step": 0.005,
+    "rotation_limit_rad_per_step": 0.03,
+    "joint_target_limit_rad_per_step": 0.03
+  },
+  "libero": {
+    "image_transform": "mirror_x",
+    "state_translation_m": [-0.45, 0, 0.9],
+    "external_camera_position_m": [1.1086131746834771, 0, 0.7103500240372423],
+    "external_camera_quaternion_wxyz": [0.6380177736282349, 0.3048497438430786, 0.30484986305236816, 0.6380177736282349],
+    "external_camera_fovy_degrees": 45,
+    "wrist_camera_position_in_cup_m": [0, 0.05, -0.095],
+    "wrist_camera_quaternion_wxyz": [0, 0, 1, 0],
+    "translation_limit_m_per_step": 0.015,
+    "rotation_limit_rad_per_step": 0.10,
+    "joint_target_limit_rad_per_step": 0.12
+  },
+  "reference_scale_audit": {
+    "inherit": "libero",
+    "translation_limit_m_per_step": 0.08660254037844387,
+    "rotation_limit_rad_per_step": 0.8660254037844386
+  },
+  "suction_upright": {
+    "inherit": "libero",
+    "maximum_cup_tilt_degrees": 8
+  },
+  "suction_refined": {
+    "inherit": "libero",
+    "maximum_cup_tilt_degrees": 8,
+    "policy_render_resolution": 256,
+    "near_table_height_m": 0.05,
+    "near_table_translation_limit_m_per_step": 0.002,
+    "near_table_replan_steps": 2
+  },
+  "suction_rgb256": {
+    "inherit": "libero",
+    "maximum_cup_tilt_degrees": 8,
+    "policy_render_resolution": 256
+  }
+}
