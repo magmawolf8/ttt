@@ -1,0 +1,62 @@
+[
+  {
+    "seed": 0,
+    "scenario": "baseline",
+    "controller_source": "frozen_pi05",
+    "task_success": false,
+    "simulated_seconds": 20.0,
+    "policy_calls": 80,
+    "contact_s": 0.0,
+    "attachment_events": 0,
+    "minimum_tcp_to_card_surface_m": 0.21124572511743936,
+    "maximum_clearance_m": 5.079967181507812e-05,
+    "valid_hold_s": 0.0,
+    "wall_seconds": 63.34399999999732,
+    "render_backend": {
+      "vendor": "Intel",
+      "renderer": "Intel(R) Arc(TM) Pro Graphics",
+      "version": "4.6.0 - Build 32.0.101.6078"
+    },
+    "directory": "runs\\seed_diagnosis\\consistent_renderer\\seed_0\\baseline"
+  },
+  {
+    "seed": 1,
+    "scenario": "baseline",
+    "controller_source": "frozen_pi05",
+    "task_success": false,
+    "simulated_seconds": 20.0,
+    "policy_calls": 80,
+    "contact_s": 0.0,
+    "attachment_events": 0,
+    "minimum_tcp_to_card_surface_m": 0.23342204256142668,
+    "maximum_clearance_m": 5.0799073613071665e-05,
+    "valid_hold_s": 0.0,
+    "wall_seconds": 67.86000000000058,
+    "render_backend": {
+      "vendor": "Intel",
+      "renderer": "Intel(R) Arc(TM) Pro Graphics",
+      "version": "4.6.0 - Build 32.0.101.6078"
+    },
+    "directory": "runs\\seed_diagnosis\\consistent_renderer\\seed_1\\baseline"
+  },
+  {
+    "seed": 42,
+    "scenario": "baseline",
+    "controller_source": "frozen_pi05",
+    "task_success": false,
+    "simulated_seconds": 20.0,
+    "policy_calls": 80,
+    "contact_s": 0.874,
+    "attachment_events": 0,
+    "minimum_tcp_to_card_surface_m": 0.0004975406980908466,
+    "maximum_clearance_m": 5.079907342327026e-05,
+    "valid_hold_s": 0.0,
+    "wall_seconds": 70.59300000000076,
+    "render_backend": {
+      "vendor": "Intel",
+      "renderer": "Intel(R) Arc(TM) Pro Graphics",
+      "version": "4.6.0 - Build 32.0.101.6078"
+    },
+    "directory": "runs\\seed_diagnosis\\consistent_renderer\\seed_42\\baseline"
+  }
+]

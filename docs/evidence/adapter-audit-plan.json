@@ -1,0 +1,24 @@
+{
+  "purpose": "Separate scene/noise sensitivity from rendering changes and overfitting of task-specific adapter restrictions",
+  "frozen_before_new_ablation_results": true,
+  "rendering": "Initialize OpenGL before importing/loading Torch; record actual renderer for every episode",
+  "unchanged": ["official pi05_libero weights and normalizers", "instruction", "camera calibration and image convention", "initial robot pose", "card randomization distribution", "physics", "suction eligibility and break conditions", "20 Hz commands and five-action replanning"],
+  "conditions": {
+    "suction_upright": "Existing global default: 15 mm / 0.10 rad Cartesian caps, 0.12 rad joint-target slew, eight-degree upright guard",
+    "reference_scale_audit": "Same calibrated cameras, 50 mm / 0.5 rad reference scaling per axis; norm caps sqrt(3) times these scales remove extra norm clipping; no upright guard; retain the same joint/actuator/workspace limits"
+  },
+  "episodes": [
+    {"profile": "suction_upright", "scene_seed": 0, "policy_noise_seed": 42},
+    {"profile": "suction_upright", "scene_seed": 1, "policy_noise_seed": 42},
+    {"profile": "suction_upright", "scene_seed": 42, "policy_noise_seed": 0},
+    {"profile": "suction_upright", "scene_seed": 42, "policy_noise_seed": 1},
+    {"profile": "reference_scale_audit", "scene_seed": 0, "policy_noise_seed": 42},
+    {"profile": "reference_scale_audit", "scene_seed": 1, "policy_noise_seed": 42},
+    {"profile": "reference_scale_audit", "scene_seed": 42, "policy_noise_seed": 42},
+    {"profile": "suction_upright", "scene_seed": 2, "policy_noise_seed": 42},
+    {"profile": "suction_upright", "scene_seed": 3, "policy_noise_seed": 42},
+    {"profile": "suction_upright", "scene_seed": 4, "policy_noise_seed": 42},
+    {"profile": "suction_upright", "scene_seed": 5, "policy_noise_seed": 42}
+  ],
+  "interpretation": "No per-seed retuning or post-hoc choice of a winning profile. These are development ablations, not a held-out success-rate evaluation. Lack of seed-conditioned code does not by itself rule out hyperparameter overfitting."
+}

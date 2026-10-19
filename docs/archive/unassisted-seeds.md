@@ -1,6 +1,8 @@
 # Unassisted pi0.5 seed runs
 
-On 2026-10-16, the RGB centering and scripted seal/lift controller were removed at the user's request. The current execution path is frozen pi0.5 → bounded action adapter → MuJoCo. Historical hybrid results/source snapshots remain archived under `runs/` and [the earlier notes](rgb-centering.md).
+> Development record from 16 October 2026. Read the [current results](../results.md) for the project status. References marked **local artifact** identify files in the original workspace; they are not included in this site.
+
+On 2026-10-16, the RGB centering and scripted seal/lift controller were removed at the user's request. The current execution path is frozen pi0.5 → bounded action adapter → MuJoCo. Historical hybrid results/source snapshots remain archived under `runs/` and [the earlier notes](hybrid-control.md).
 
 ## Removed and retained behavior
 
@@ -39,12 +41,12 @@ The recorded initial card XY positions, read only for offline evaluation, were (
 
 ## Artifacts and verification
 
-- [Machine-readable batch results](../runs/pi05_unassisted_seeds_0_1/summary.json).
-- [Seed 0 dashboard video](../runs/pi05_unassisted_seeds_0_1/seed_0/baseline/episode_dashboard.mp4), [results](../runs/pi05_unassisted_seeds_0_1/seed_0/baseline/results.json), [diagnostics](../runs/pi05_unassisted_seeds_0_1/seed_0/baseline/diagnostics.json).
-- [Seed 1 dashboard video](../runs/pi05_unassisted_seeds_0_1/seed_1/baseline/episode_dashboard.mp4), [results](../runs/pi05_unassisted_seeds_0_1/seed_1/baseline/results.json), [diagnostics](../runs/pi05_unassisted_seeds_0_1/seed_1/baseline/diagnostics.json).
-- [20-second comparison video](../runs/pi05_unassisted_seeds_0_1/seed_comparison_20s.mp4).
-- [Direct-action and video verification](../runs/pi05_unassisted_seeds_0_1/verification.json).
+- Machine-readable batch results (`runs/pi05_unassisted_seeds_0_1/summary.json`; local artifact).
+- Seed 0 dashboard video (`runs/pi05_unassisted_seeds_0_1/seed_0/baseline/episode_dashboard.mp4`; local artifact), results (`runs/pi05_unassisted_seeds_0_1/seed_0/baseline/results.json`; local artifact), diagnostics (`runs/pi05_unassisted_seeds_0_1/seed_0/baseline/diagnostics.json`; local artifact).
+- Seed 1 dashboard video (`runs/pi05_unassisted_seeds_0_1/seed_1/baseline/episode_dashboard.mp4`; local artifact), results (`runs/pi05_unassisted_seeds_0_1/seed_1/baseline/results.json`; local artifact), diagnostics (`runs/pi05_unassisted_seeds_0_1/seed_1/baseline/diagnostics.json`; local artifact).
+- 20-second comparison video (`runs/pi05_unassisted_seeds_0_1/seed_comparison_20s.mp4`; local artifact).
+- Direct-action and video verification (`runs/pi05_unassisted_seeds_0_1/verification.json`; local artifact).
 
 For all 800 commands, the adapter's recorded raw input exactly matches its saved neural action. Vacuum state matches the policy action's sign on every command, with no latch. No auxiliary-controller telemetry is present. Both dashboard videos contain exactly 400 frames at 20 fps. Removed source files are absent, and the modified runtime files compile.
 
-Follow-up: [the seed diagnosis](seed-diagnosis.md) found a graphics-startup regression: the shared-model runner imported Torch before the first OpenGL context and selected a different rendering adapter from standalone runs. It is fixed, and actual GL adapter metadata is now recorded. The original results above remain historical observations; use the follow-up's rendering-consistent reruns and crossed experiments for comparisons. Seed 42 still contacts the card, while seeds 0/1 still miss. The follow-up also audits whether globally chosen adapter settings overfit seed 42.
+Follow-up: [the seed diagnosis](seed-audit.md) found a graphics-startup regression: the shared-model runner imported Torch before the first OpenGL context and selected a different rendering adapter from standalone runs. It is fixed, and actual GL adapter metadata is now recorded. The original results above remain historical observations; use the follow-up's rendering-consistent reruns and crossed experiments for comparisons. Seed 42 still contacts the card, while seeds 0/1 still miss. The follow-up also audits whether globally chosen adapter settings overfit seed 42.

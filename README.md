@@ -1,22 +1,27 @@
 # UR7e card manipulation in MuJoCo
 
-A UR7e with a suction tool, two RGB cameras and frozen OpenPI pi0.5 inference on an RTX 4070 Laptop GPU. The task is `Pick up the face-down card.`
+A UR7e suction tool, two RGB cameras, and frozen OpenPI pi0.5 inference on an RTX 4070 Laptop GPU. The instruction is `Pick up the face-down card.`
 
-The current runtime uses frozen pi0.5 through an experimental, bounded action adapter. RGB centering and the scripted seal/lift controller have been removed. No training or task-specific weight changes are used. [The seed audit](docs/seed-diagnosis.md) records a rendering-startup fix, strong scene/noise sensitivity and the limits of earlier single-seed tuning; reliable pickup remains unachieved.
+The minimum simulation-to-policy pipeline runs. Reliable pickup remains unachieved: none of the 14 controlled development episodes met the full hold criterion. The adapter is experimental; RGB centering and scripted lifting have been removed. See [current results](docs/results.md) and the [detailed seed audit](docs/archive/seed-audit.md).
 
 ## Run
 
-Activate the existing `simenv` conda environment, then:
+Activate the existing `simenv` environment, then:
 
 ```powershell
-# Frozen policy, corrected camera/control adapter:
-python run_policy.py --backend cuda --seconds 20 --seed 42 --output-dir runs/my_policy_episode
-# Two unassisted seeds, reusing one model on the GPU:
+python run_policy.py --backend cuda --seconds 20 --seed 42 --output-dir runs/my_episode
 python tools/run_scenarios.py --seeds 0 1 --output-dir runs/my_seed_sweep
-# Independent scripted simulator checks:
 python validate_sim.py
 ```
 
-Each episode records raw policy actions, observations, adapter bounds, evaluator telemetry and a 20-second video. Physics pauses during inference. Ground-truth card pose is restricted to simulation mechanics, scene initialization, separately labelled scripted demonstrations and evaluation.
+Each episode records policy inputs/actions, bounded commands, evaluator telemetry and video. Physics pauses during inference. Card ground truth is restricted to simulation mechanics, initialization, explicitly scripted demonstrations and evaluation.
 
-Read [the documentation index](docs/README.md) for setup, interfaces, results, videos and limitations. The simulator uses a rigid card and conditional suction weld; flexible cards, peeling and decks remain unmodeled. Physical deployment and foundation-model orchestration are outside this prototype.
+## Documentation
+
+- [Project overview](docs/index.md), [setup](docs/setup.md), [architecture](docs/architecture.md), and [results](docs/results.md).
+- [Documentation site instructions](docs/publishing.md): preview locally, rebuild, and enable GitHub Pages later.
+- [Milestone specification](Board_Game_Robot_Milestone_1_Spec.docx).
+
+Open `docs/index.html` directly, or run `python -m http.server 8000 --bind 127.0.0.1 --directory docs` and visit `http://127.0.0.1:8000`.
+
+Model weights, downloaded dependencies, datasets and complete run outputs are ignored by Git. The documentation includes a small, attributed evidence bundle and one comparison video. No remote repository or public site has been configured.

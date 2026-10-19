@@ -1,0 +1,89 @@
+{
+  "experiment_date": "2026-10-16",
+  "files": [
+    {
+      "file": "evidence/controlled-baseline.json",
+      "source": "runs/seed_diagnosis/consistent_renderer/summary.json",
+      "sha256": "1729bcc5b116f47e9b3be1df89ba3a145d967543eeb58e78c1be3bfb6c8da0bf",
+      "bytes": 1957
+    },
+    {
+      "file": "evidence/adapter-audit.json",
+      "source": "runs/seed_diagnosis/adapter_audit/results.json",
+      "sha256": "a0dd55deaf7771aa368509581103929179cf426cbb0ad402f05fa31e5234be58",
+      "bytes": 10053
+    },
+    {
+      "file": "evidence/adapter-audit-plan.json",
+      "source": "runs/seed_diagnosis/adapter_audit_plan.json",
+      "sha256": "2cbc5e9a48565d428eca213040f3d99c9f8067037270475050d25980a034aa72",
+      "bytes": 2098
+    },
+    {
+      "file": "evidence/episode-verification.json",
+      "source": "runs/seed_diagnosis/controlled_run_verification.json",
+      "sha256": "5f180251c0a2e104d890b0c87b0364f7c7638551fa03cf6981e0a53367aa6ddf",
+      "bytes": 9948
+    },
+    {
+      "file": "evidence/seed-contract.json",
+      "source": "runs/seed_diagnosis/seed_contract/results.json",
+      "sha256": "020e00eb77e1d173f30eccdb651be7705087906e3dfae9b81957e9125660558f",
+      "bytes": 5274
+    },
+    {
+      "file": "evidence/policy-parity.json",
+      "source": "runs/seed_diagnosis/policy_parity/results.json",
+      "sha256": "06a7f96b8c606a39328b3951349fc526a1c7402a6a8e9033f02bbeea6d307df2",
+      "bytes": 818
+    },
+    {
+      "file": "evidence/attention-numerics.json",
+      "source": "runs/seed_diagnosis/attention_numerics/results.json",
+      "sha256": "0b097ba08fdd9b9104adda1364959db58d9face2ab1585c61436dbae664ade1d",
+      "bytes": 4305
+    },
+    {
+      "file": "evidence/pixel-sensitivity.json",
+      "source": "runs/seed_diagnosis/pixel_sensitivity.json",
+      "sha256": "e51dafc6437710e4954b458e2a2f00c4fd1179bcf673b25d4126171811cfe7a1",
+      "bytes": 315
+    },
+    {
+      "file": "evidence/graphics-first.json",
+      "source": "runs/seed_diagnosis/render_order/results.json",
+      "sha256": "7f6de433b04739578019c5f2310780941c7546195c03470c189b53fb88383517",
+      "bytes": 5921
+    },
+    {
+      "file": "evidence/policy-first.json",
+      "source": "runs/seed_diagnosis/render_order_policy_first/results.json",
+      "sha256": "df08d730a737f3bc9f62f48d44c24b3be7aaba86ee9f499ba4447fbd8a2eb18d",
+      "bytes": 11123
+    },
+    {
+      "file": "evidence/video-verification.json",
+      "source": "runs/seed_diagnosis/comparison_video_verification.json",
+      "sha256": "4d8e749fdf36754cbde0873b44b7f96ce14ddcf5d5901767dec906f9b50448d4",
+      "bytes": 100
+    },
+    {
+      "file": "media/seed-comparison.mp4",
+      "source": "runs/seed_diagnosis/controlled_seed_comparison_20s.mp4",
+      "sha256": "741de6ce7e8a84582a0be48dc75231b1ed1f544d3a9fb34ff5a3944d8bd58da6",
+      "bytes": 1136504
+    },
+    {
+      "file": "media/seed-comparison.png",
+      "source": "runs/seed_diagnosis/controlled_seed_comparison_lift.png",
+      "sha256": "1b9f6740c4a0123f985cbc64bc2489af9fbc9e9b2bfcd0e744ee11324435b147",
+      "bytes": 383806
+    },
+    {
+      "file": "media/render-context.png",
+      "source": "runs/seed_diagnosis/render_context_comparison.png",
+      "sha256": "961e7cbd1670cdc6268949e9f32911a3f39439fc5956412aae65c5da78aa7b5e",
+      "bytes": 99833
+    }
+  ]
+}

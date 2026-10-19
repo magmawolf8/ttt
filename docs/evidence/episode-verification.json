@@ -1,0 +1,299 @@
+{
+  "episodes": [
+    {
+      "directory": "runs/seed_diagnosis/consistent_renderer/seed_0/baseline",
+      "scene_seed": 0,
+      "noise_seed": 0,
+      "profile": "suction_upright",
+      "checks": {
+        "all_raw_policy_actions_passed_unchanged": true,
+        "vacuum_matches_raw_policy_sign": true,
+        "no_auxiliary_controller": true,
+        "gpu_policy": true,
+        "graphics_consistent": true,
+        "complete_twenty_seconds": true
+      },
+      "closest_mm": 211.24572511743935,
+      "contact_s": 0.0,
+      "attachment_events": 0,
+      "attached_s": 0.0,
+      "maximum_clearance_mm": 0.05079967181507812,
+      "valid_hold_s": 0.0,
+      "success": false
+    },
+    {
+      "directory": "runs/seed_diagnosis/consistent_renderer/seed_1/baseline",
+      "scene_seed": 1,
+      "noise_seed": 1,
+      "profile": "suction_upright",
+      "checks": {
+        "all_raw_policy_actions_passed_unchanged": true,
+        "vacuum_matches_raw_policy_sign": true,
+        "no_auxiliary_controller": true,
+        "gpu_policy": true,
+        "graphics_consistent": true,
+        "complete_twenty_seconds": true
+      },
+      "closest_mm": 233.42204256142668,
+      "contact_s": 0.0,
+      "attachment_events": 0,
+      "attached_s": 0.0,
+      "maximum_clearance_mm": 0.05079907361307166,
+      "valid_hold_s": 0.0,
+      "success": false
+    },
+    {
+      "directory": "runs/seed_diagnosis/consistent_renderer/seed_42/baseline",
+      "scene_seed": 42,
+      "noise_seed": 42,
+      "profile": "suction_upright",
+      "checks": {
+        "all_raw_policy_actions_passed_unchanged": true,
+        "vacuum_matches_raw_policy_sign": true,
+        "no_auxiliary_controller": true,
+        "gpu_policy": true,
+        "graphics_consistent": true,
+        "complete_twenty_seconds": true
+      },
+      "closest_mm": 0.4975406980908466,
+      "contact_s": 0.874,
+      "attachment_events": 0,
+      "attached_s": 0.0,
+      "maximum_clearance_mm": 0.05079907342327026,
+      "valid_hold_s": 0.0,
+      "success": false
+    },
+    {
+      "directory": "runs/seed_diagnosis/adapter_audit/reference_scale_audit/scene_0_noise_42",
+      "scene_seed": 0,
+      "noise_seed": 42,
+      "profile": "reference_scale_audit",
+      "checks": {
+        "all_raw_policy_actions_passed_unchanged": true,
+        "vacuum_matches_raw_policy_sign": true,
+        "no_auxiliary_controller": true,
+        "gpu_policy": true,
+        "graphics_consistent": true,
+        "complete_twenty_seconds": true
+      },
+      "closest_mm": 234.95768843149202,
+      "contact_s": 0.0,
+      "attachment_events": 0,
+      "attached_s": 0.0,
+      "maximum_clearance_mm": 0.05079967181507812,
+      "valid_hold_s": 0.0,
+      "success": false
+    },
+    {
+      "directory": "runs/seed_diagnosis/adapter_audit/reference_scale_audit/scene_1_noise_42",
+      "scene_seed": 1,
+      "noise_seed": 42,
+      "profile": "reference_scale_audit",
+      "checks": {
+        "all_raw_policy_actions_passed_unchanged": true,
+        "vacuum_matches_raw_policy_sign": true,
+        "no_auxiliary_controller": true,
+        "gpu_policy": true,
+        "graphics_consistent": true,
+        "complete_twenty_seconds": true
+      },
+      "closest_mm": 233.42204256142668,
+      "contact_s": 0.0,
+      "attachment_events": 0,
+      "attached_s": 0.0,
+      "maximum_clearance_mm": 0.05094251157926734,
+      "valid_hold_s": 0.0,
+      "success": false
+    },
+    {
+      "directory": "runs/seed_diagnosis/adapter_audit/reference_scale_audit/scene_42_noise_42",
+      "scene_seed": 42,
+      "noise_seed": 42,
+      "profile": "reference_scale_audit",
+      "checks": {
+        "all_raw_policy_actions_passed_unchanged": true,
+        "vacuum_matches_raw_policy_sign": true,
+        "no_auxiliary_controller": true,
+        "gpu_policy": true,
+        "graphics_consistent": true,
+        "complete_twenty_seconds": true
+      },
+      "closest_mm": 200.61693445365106,
+      "contact_s": 0.0,
+      "attachment_events": 0,
+      "attached_s": 0.0,
+      "maximum_clearance_mm": 0.050799073641581816,
+      "valid_hold_s": 0.0,
+      "success": false
+    },
+    {
+      "directory": "runs/seed_diagnosis/adapter_audit/suction_upright/scene_0_noise_42",
+      "scene_seed": 0,
+      "noise_seed": 42,
+      "profile": "suction_upright",
+      "checks": {
+        "all_raw_policy_actions_passed_unchanged": true,
+        "vacuum_matches_raw_policy_sign": true,
+        "no_auxiliary_controller": true,
+        "gpu_policy": true,
+        "graphics_consistent": true,
+        "complete_twenty_seconds": true
+      },
+      "closest_mm": 234.95768843149202,
+      "contact_s": 0.0,
+      "attachment_events": 0,
+      "attached_s": 0.0,
+      "maximum_clearance_mm": 0.05079967181507812,
+      "valid_hold_s": 0.0,
+      "success": false
+    },
+    {
+      "directory": "runs/seed_diagnosis/adapter_audit/suction_upright/scene_1_noise_42",
+      "scene_seed": 1,
+      "noise_seed": 42,
+      "profile": "suction_upright",
+      "checks": {
+        "all_raw_policy_actions_passed_unchanged": true,
+        "vacuum_matches_raw_policy_sign": true,
+        "no_auxiliary_controller": true,
+        "gpu_policy": true,
+        "graphics_consistent": true,
+        "complete_twenty_seconds": true
+      },
+      "closest_mm": 233.42204256142668,
+      "contact_s": 0.0,
+      "attachment_events": 0,
+      "attached_s": 0.0,
+      "maximum_clearance_mm": 0.050799073681888254,
+      "valid_hold_s": 0.0,
+      "success": false
+    },
+    {
+      "directory": "runs/seed_diagnosis/adapter_audit/suction_upright/scene_2_noise_42",
+      "scene_seed": 2,
+      "noise_seed": 42,
+      "profile": "suction_upright",
+      "checks": {
+        "all_raw_policy_actions_passed_unchanged": true,
+        "vacuum_matches_raw_policy_sign": true,
+        "no_auxiliary_controller": true,
+        "gpu_policy": true,
+        "graphics_consistent": true,
+        "complete_twenty_seconds": true
+      },
+      "closest_mm": 3.713211250173388,
+      "contact_s": 0.0,
+      "attachment_events": 0,
+      "attached_s": 0.0,
+      "maximum_clearance_mm": 0.05079907367742278,
+      "valid_hold_s": 0.0,
+      "success": false
+    },
+    {
+      "directory": "runs/seed_diagnosis/adapter_audit/suction_upright/scene_3_noise_42",
+      "scene_seed": 3,
+      "noise_seed": 42,
+      "profile": "suction_upright",
+      "checks": {
+        "all_raw_policy_actions_passed_unchanged": true,
+        "vacuum_matches_raw_policy_sign": true,
+        "no_auxiliary_controller": true,
+        "gpu_policy": true,
+        "graphics_consistent": true,
+        "complete_twenty_seconds": true
+      },
+      "closest_mm": 169.65908493539658,
+      "contact_s": 0.0,
+      "attachment_events": 0,
+      "attached_s": 0.0,
+      "maximum_clearance_mm": 0.05079907365524019,
+      "valid_hold_s": 0.0,
+      "success": false
+    },
+    {
+      "directory": "runs/seed_diagnosis/adapter_audit/suction_upright/scene_42_noise_0",
+      "scene_seed": 42,
+      "noise_seed": 0,
+      "profile": "suction_upright",
+      "checks": {
+        "all_raw_policy_actions_passed_unchanged": true,
+        "vacuum_matches_raw_policy_sign": true,
+        "no_auxiliary_controller": true,
+        "gpu_policy": true,
+        "graphics_consistent": true,
+        "complete_twenty_seconds": true
+      },
+      "closest_mm": 0.5910186529530943,
+      "contact_s": 4.336,
+      "attachment_events": 6,
+      "attached_s": 11.040000000000001,
+      "maximum_clearance_mm": 67.46954953911899,
+      "valid_hold_s": 0.22200000000000017,
+      "success": false
+    },
+    {
+      "directory": "runs/seed_diagnosis/adapter_audit/suction_upright/scene_42_noise_1",
+      "scene_seed": 42,
+      "noise_seed": 1,
+      "profile": "suction_upright",
+      "checks": {
+        "all_raw_policy_actions_passed_unchanged": true,
+        "vacuum_matches_raw_policy_sign": true,
+        "no_auxiliary_controller": true,
+        "gpu_policy": true,
+        "graphics_consistent": true,
+        "complete_twenty_seconds": true
+      },
+      "closest_mm": 160.52964552558683,
+      "contact_s": 0.0,
+      "attachment_events": 0,
+      "attached_s": 0.0,
+      "maximum_clearance_mm": 0.050799073620905515,
+      "valid_hold_s": 0.0,
+      "success": false
+    },
+    {
+      "directory": "runs/seed_diagnosis/adapter_audit/suction_upright/scene_4_noise_42",
+      "scene_seed": 4,
+      "noise_seed": 42,
+      "profile": "suction_upright",
+      "checks": {
+        "all_raw_policy_actions_passed_unchanged": true,
+        "vacuum_matches_raw_policy_sign": true,
+        "no_auxiliary_controller": true,
+        "gpu_policy": true,
+        "graphics_consistent": true,
+        "complete_twenty_seconds": true
+      },
+      "closest_mm": 107.15639469982109,
+      "contact_s": 0.0,
+      "attachment_events": 0,
+      "attached_s": 0.0,
+      "maximum_clearance_mm": 0.05079966743472972,
+      "valid_hold_s": 0.0,
+      "success": false
+    },
+    {
+      "directory": "runs/seed_diagnosis/adapter_audit/suction_upright/scene_5_noise_42",
+      "scene_seed": 5,
+      "noise_seed": 42,
+      "profile": "suction_upright",
+      "checks": {
+        "all_raw_policy_actions_passed_unchanged": true,
+        "vacuum_matches_raw_policy_sign": true,
+        "no_auxiliary_controller": true,
+        "gpu_policy": true,
+        "graphics_consistent": true,
+        "complete_twenty_seconds": true
+      },
+      "closest_mm": 229.6524126991474,
+      "contact_s": 0.0,
+      "attachment_events": 0,
+      "attached_s": 0.0,
+      "maximum_clearance_mm": 0.05079967182065355,
+      "valid_hold_s": 0.0,
+      "success": false
+    }
+  ],
+  "all_checks_pass": true
+}

@@ -1,0 +1,379 @@
+[
+  {
+    "label": "before_load",
+    "gl_renderer": "NVIDIA GeForce RTX 4070 Laptop GPU/PCIe/SSE2",
+    "policy_loaded_before_first_gl_context": true,
+    "vs_saved_standalone": {
+      "observation/image": {
+        "changed_values": 36785,
+        "mean_absolute_error": 0.4176830888605442,
+        "max_absolute_error": 67.0
+      },
+      "observation/wrist_image": {
+        "changed_values": 105733,
+        "mean_absolute_error": 2.6075879570578233,
+        "max_absolute_error": 112.0
+      },
+      "observation/state": {
+        "changed_values": 0,
+        "mean_absolute_error": 0.0,
+        "max_absolute_error": 0.0
+      }
+    },
+    "vs_before_policy_load": {
+      "observation/image": {
+        "changed_values": 0,
+        "mean_absolute_error": 0.0,
+        "max_absolute_error": 0.0
+      },
+      "observation/wrist_image": {
+        "changed_values": 0,
+        "mean_absolute_error": 0.0,
+        "max_absolute_error": 0.0
+      },
+      "observation/state": {
+        "changed_values": 0,
+        "mean_absolute_error": 0.0,
+        "max_absolute_error": 0.0
+      }
+    },
+    "different_model_arrays": [],
+    "different_data_arrays": [
+      "efc_AR_rownnz"
+    ]
+  },
+  {
+    "label": "same_context_after_load",
+    "gl_renderer": "NVIDIA GeForce RTX 4070 Laptop GPU/PCIe/SSE2",
+    "policy_loaded_before_first_gl_context": true,
+    "vs_saved_standalone": {
+      "observation/image": {
+        "changed_values": 36785,
+        "mean_absolute_error": 0.4176830888605442,
+        "max_absolute_error": 67.0
+      },
+      "observation/wrist_image": {
+        "changed_values": 105733,
+        "mean_absolute_error": 2.6075879570578233,
+        "max_absolute_error": 112.0
+      },
+      "observation/state": {
+        "changed_values": 0,
+        "mean_absolute_error": 0.0,
+        "max_absolute_error": 0.0
+      }
+    },
+    "vs_before_policy_load": {
+      "observation/image": {
+        "changed_values": 0,
+        "mean_absolute_error": 0.0,
+        "max_absolute_error": 0.0
+      },
+      "observation/wrist_image": {
+        "changed_values": 0,
+        "mean_absolute_error": 0.0,
+        "max_absolute_error": 0.0
+      },
+      "observation/state": {
+        "changed_values": 0,
+        "mean_absolute_error": 0.0,
+        "max_absolute_error": 0.0
+      }
+    },
+    "different_model_arrays": [],
+    "different_data_arrays": []
+  },
+  {
+    "label": "new_context_0_after_load",
+    "gl_renderer": "NVIDIA GeForce RTX 4070 Laptop GPU/PCIe/SSE2",
+    "policy_loaded_before_first_gl_context": true,
+    "vs_saved_standalone": {
+      "observation/image": {
+        "changed_values": 36785,
+        "mean_absolute_error": 0.4176830888605442,
+        "max_absolute_error": 67.0
+      },
+      "observation/wrist_image": {
+        "changed_values": 105733,
+        "mean_absolute_error": 2.6075879570578233,
+        "max_absolute_error": 112.0
+      },
+      "observation/state": {
+        "changed_values": 0,
+        "mean_absolute_error": 0.0,
+        "max_absolute_error": 0.0
+      }
+    },
+    "vs_before_policy_load": {
+      "observation/image": {
+        "changed_values": 0,
+        "mean_absolute_error": 0.0,
+        "max_absolute_error": 0.0
+      },
+      "observation/wrist_image": {
+        "changed_values": 0,
+        "mean_absolute_error": 0.0,
+        "max_absolute_error": 0.0
+      },
+      "observation/state": {
+        "changed_values": 0,
+        "mean_absolute_error": 0.0,
+        "max_absolute_error": 0.0
+      }
+    },
+    "different_model_arrays": [],
+    "different_data_arrays": []
+  },
+  {
+    "label": "new_context_0_after_infer",
+    "gl_renderer": "NVIDIA GeForce RTX 4070 Laptop GPU/PCIe/SSE2",
+    "policy_loaded_before_first_gl_context": true,
+    "vs_saved_standalone": {
+      "observation/image": {
+        "changed_values": 36785,
+        "mean_absolute_error": 0.4176830888605442,
+        "max_absolute_error": 67.0
+      },
+      "observation/wrist_image": {
+        "changed_values": 105733,
+        "mean_absolute_error": 2.6075879570578233,
+        "max_absolute_error": 112.0
+      },
+      "observation/state": {
+        "changed_values": 0,
+        "mean_absolute_error": 0.0,
+        "max_absolute_error": 0.0
+      }
+    },
+    "vs_before_policy_load": {
+      "observation/image": {
+        "changed_values": 0,
+        "mean_absolute_error": 0.0,
+        "max_absolute_error": 0.0
+      },
+      "observation/wrist_image": {
+        "changed_values": 0,
+        "mean_absolute_error": 0.0,
+        "max_absolute_error": 0.0
+      },
+      "observation/state": {
+        "changed_values": 0,
+        "mean_absolute_error": 0.0,
+        "max_absolute_error": 0.0
+      }
+    },
+    "different_model_arrays": [],
+    "different_data_arrays": [
+      "efc_AR_rownnz"
+    ]
+  },
+  {
+    "label": "new_context_1_after_load",
+    "gl_renderer": "NVIDIA GeForce RTX 4070 Laptop GPU/PCIe/SSE2",
+    "policy_loaded_before_first_gl_context": true,
+    "vs_saved_standalone": {
+      "observation/image": {
+        "changed_values": 36785,
+        "mean_absolute_error": 0.4176830888605442,
+        "max_absolute_error": 67.0
+      },
+      "observation/wrist_image": {
+        "changed_values": 105733,
+        "mean_absolute_error": 2.6075879570578233,
+        "max_absolute_error": 112.0
+      },
+      "observation/state": {
+        "changed_values": 0,
+        "mean_absolute_error": 0.0,
+        "max_absolute_error": 0.0
+      }
+    },
+    "vs_before_policy_load": {
+      "observation/image": {
+        "changed_values": 0,
+        "mean_absolute_error": 0.0,
+        "max_absolute_error": 0.0
+      },
+      "observation/wrist_image": {
+        "changed_values": 0,
+        "mean_absolute_error": 0.0,
+        "max_absolute_error": 0.0
+      },
+      "observation/state": {
+        "changed_values": 0,
+        "mean_absolute_error": 0.0,
+        "max_absolute_error": 0.0
+      }
+    },
+    "different_model_arrays": [],
+    "different_data_arrays": []
+  },
+  {
+    "label": "new_context_1_after_infer",
+    "gl_renderer": "NVIDIA GeForce RTX 4070 Laptop GPU/PCIe/SSE2",
+    "policy_loaded_before_first_gl_context": true,
+    "vs_saved_standalone": {
+      "observation/image": {
+        "changed_values": 36785,
+        "mean_absolute_error": 0.4176830888605442,
+        "max_absolute_error": 67.0
+      },
+      "observation/wrist_image": {
+        "changed_values": 105733,
+        "mean_absolute_error": 2.6075879570578233,
+        "max_absolute_error": 112.0
+      },
+      "observation/state": {
+        "changed_values": 0,
+        "mean_absolute_error": 0.0,
+        "max_absolute_error": 0.0
+      }
+    },
+    "vs_before_policy_load": {
+      "observation/image": {
+        "changed_values": 0,
+        "mean_absolute_error": 0.0,
+        "max_absolute_error": 0.0
+      },
+      "observation/wrist_image": {
+        "changed_values": 0,
+        "mean_absolute_error": 0.0,
+        "max_absolute_error": 0.0
+      },
+      "observation/state": {
+        "changed_values": 0,
+        "mean_absolute_error": 0.0,
+        "max_absolute_error": 0.0
+      }
+    },
+    "different_model_arrays": [],
+    "different_data_arrays": [
+      "efc_AR_rownnz"
+    ]
+  },
+  {
+    "label": "new_context_2_after_load",
+    "gl_renderer": "NVIDIA GeForce RTX 4070 Laptop GPU/PCIe/SSE2",
+    "policy_loaded_before_first_gl_context": true,
+    "vs_saved_standalone": {
+      "observation/image": {
+        "changed_values": 36785,
+        "mean_absolute_error": 0.4176830888605442,
+        "max_absolute_error": 67.0
+      },
+      "observation/wrist_image": {
+        "changed_values": 105733,
+        "mean_absolute_error": 2.6075879570578233,
+        "max_absolute_error": 112.0
+      },
+      "observation/state": {
+        "changed_values": 0,
+        "mean_absolute_error": 0.0,
+        "max_absolute_error": 0.0
+      }
+    },
+    "vs_before_policy_load": {
+      "observation/image": {
+        "changed_values": 0,
+        "mean_absolute_error": 0.0,
+        "max_absolute_error": 0.0
+      },
+      "observation/wrist_image": {
+        "changed_values": 0,
+        "mean_absolute_error": 0.0,
+        "max_absolute_error": 0.0
+      },
+      "observation/state": {
+        "changed_values": 0,
+        "mean_absolute_error": 0.0,
+        "max_absolute_error": 0.0
+      }
+    },
+    "different_model_arrays": [],
+    "different_data_arrays": []
+  },
+  {
+    "label": "new_context_2_after_infer",
+    "gl_renderer": "NVIDIA GeForce RTX 4070 Laptop GPU/PCIe/SSE2",
+    "policy_loaded_before_first_gl_context": true,
+    "vs_saved_standalone": {
+      "observation/image": {
+        "changed_values": 36785,
+        "mean_absolute_error": 0.4176830888605442,
+        "max_absolute_error": 67.0
+      },
+      "observation/wrist_image": {
+        "changed_values": 105733,
+        "mean_absolute_error": 2.6075879570578233,
+        "max_absolute_error": 112.0
+      },
+      "observation/state": {
+        "changed_values": 0,
+        "mean_absolute_error": 0.0,
+        "max_absolute_error": 0.0
+      }
+    },
+    "vs_before_policy_load": {
+      "observation/image": {
+        "changed_values": 0,
+        "mean_absolute_error": 0.0,
+        "max_absolute_error": 0.0
+      },
+      "observation/wrist_image": {
+        "changed_values": 0,
+        "mean_absolute_error": 0.0,
+        "max_absolute_error": 0.0
+      },
+      "observation/state": {
+        "changed_values": 0,
+        "mean_absolute_error": 0.0,
+        "max_absolute_error": 0.0
+      }
+    },
+    "different_model_arrays": [],
+    "different_data_arrays": [
+      "efc_AR_rownnz"
+    ]
+  },
+  {
+    "label": "original_context_after_inference",
+    "gl_renderer": "NVIDIA GeForce RTX 4070 Laptop GPU/PCIe/SSE2",
+    "policy_loaded_before_first_gl_context": true,
+    "vs_saved_standalone": {
+      "observation/image": {
+        "changed_values": 36785,
+        "mean_absolute_error": 0.4176830888605442,
+        "max_absolute_error": 67.0
+      },
+      "observation/wrist_image": {
+        "changed_values": 105733,
+        "mean_absolute_error": 2.6075879570578233,
+        "max_absolute_error": 112.0
+      },
+      "observation/state": {
+        "changed_values": 0,
+        "mean_absolute_error": 0.0,
+        "max_absolute_error": 0.0
+      }
+    },
+    "vs_before_policy_load": {
+      "observation/image": {
+        "changed_values": 0,
+        "mean_absolute_error": 0.0,
+        "max_absolute_error": 0.0
+      },
+      "observation/wrist_image": {
+        "changed_values": 0,
+        "mean_absolute_error": 0.0,
+        "max_absolute_error": 0.0
+      },
+      "observation/state": {
+        "changed_values": 0,
+        "mean_absolute_error": 0.0,
+        "max_absolute_error": 0.0
+      }
+    },
+    "different_model_arrays": [],
+    "different_data_arrays": []
+  }
+]

@@ -1,10 +1,17 @@
-# Project notes
+# Documentation
 
-- [Setup and reproduction](setup.md): Windows environment, assets, GPU runtime and commands.
-- [Simulation and policy contracts](architecture.md): observation/action interfaces, suction physics, data and evaluation boundaries.
-- [Initial investigation](prior-investigation.md): CPU/GPU validation, six adapter experiments, camera/control audits and original edge-overhang diagnosis.
-- [Unassisted seed runs](unassisted-seeds.md): removal of the auxiliary controllers and current frozen-policy results.
-- [Seed regression and adaptation audit](seed-diagnosis.md): graphics-startup fix, controlled scene/noise experiments, adapter ablation and limits of single-seed tuning.
-- [Archived RGB centering and scenario results](rgb-centering.md): historical measured results and artifact index; those controllers are removed from the current runtime.
+[Read the overview](index.md) or open `index.html` for the styled documentation site.
 
-All reported trials are development experiments. They do not constitute the specification's full held-out evaluation. No training or checkpoint edits were performed during either diagnosis. Scripted, learned and hybrid controllers are identified separately.
+| Section | Contents |
+| --- | --- |
+| [Setup](setup.md) | Environment, assets, and commands for current code |
+| [Architecture](architecture.md) | Policy/control interfaces, physics, and scoring |
+| [Results](results.md) | Current evidence, video, and limitations |
+| [Evidence](evidence/index.md) | Included measurements and provenance |
+| [Site maintenance](publishing.md) | Build, preview, and future GitHub Pages setup |
+| [Seed audit](archive/seed-audit.md) | Detailed rendering, sampling, adapter, and numerical diagnosis |
+| [Unassisted runs](archive/unassisted-seeds.md) | Auxiliary controller removal and original two-seed batch |
+| [Initial investigation](archive/initial-investigation.md) | Earlier CPU/GPU and adapter experiments |
+| [Hybrid experiments](archive/hybrid-control.md) | Archived RGB centering and scripted completion |
+
+Edit Markdown, then run `python tools/build_docs.py`. Commit Markdown and generated HTML together. `docs/site.json` controls page order and navigation; `docs/static/site.css` controls presentation. The HTML is committed so GitHub Pages can serve `main` → `/docs` directly. See [site maintenance](publishing.md) for the complete workflow.

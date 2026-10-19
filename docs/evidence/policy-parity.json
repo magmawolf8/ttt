@@ -1,0 +1,29 @@
+[
+  {
+    "seed": 0,
+    "relative_l2": 0.43065023383618406,
+    "maximum_action_difference": 1.5761263112154005,
+    "maximum_xyz_error_mm": 1.5374860680878177,
+    "executed_gripper_signs_equal": true,
+    "wall_seconds": 44.015999999995984,
+    "pass": false
+  },
+  {
+    "seed": 1,
+    "relative_l2": 0.007282293417525398,
+    "maximum_action_difference": 0.010670845614612068,
+    "maximum_xyz_error_mm": 0.5335422807306034,
+    "executed_gripper_signs_equal": true,
+    "wall_seconds": 43.375,
+    "pass": true
+  },
+  {
+    "seed": 42,
+    "relative_l2": 0.004574573759808009,
+    "maximum_action_difference": 0.004598825147867247,
+    "maximum_xyz_error_mm": 0.22994125739336238,
+    "executed_gripper_signs_equal": true,
+    "wall_seconds": 37.06300000000192,
+    "pass": true
+  }
+]

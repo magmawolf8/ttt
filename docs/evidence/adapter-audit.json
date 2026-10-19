@@ -1,0 +1,338 @@
+[
+  {
+    "profile": "suction_upright",
+    "scene_seed": 0,
+    "policy_noise_seed": 42,
+    "directory": "runs/seed_diagnosis/adapter_audit/suction_upright/scene_0_noise_42",
+    "controller_source": "frozen_pi05",
+    "render_backend": {
+      "vendor": "Intel",
+      "renderer": "Intel(R) Arc(TM) Pro Graphics",
+      "version": "4.6.0 - Build 32.0.101.6078"
+    },
+    "bootstrap_backend": {
+      "vendor": "Intel",
+      "renderer": "Intel(R) Arc(TM) Pro Graphics",
+      "version": "4.6.0 - Build 32.0.101.6078"
+    },
+    "success": false,
+    "closest_distance_mm": 234.95768843149202,
+    "contact_s": 0.0,
+    "eligible_s": 0.0,
+    "valid_hold_s": 0.0,
+    "interventions": {
+      "action_clipped": 150,
+      "translation_speed": 213,
+      "workspace": 235,
+      "cup_tilt": 106,
+      "rotation_speed": 21,
+      "joint_target_speed": 1
+    },
+    "simulated_seconds": 20.0,
+    "policy_calls": 80
+  },
+  {
+    "profile": "suction_upright",
+    "scene_seed": 1,
+    "policy_noise_seed": 42,
+    "directory": "runs/seed_diagnosis/adapter_audit/suction_upright/scene_1_noise_42",
+    "controller_source": "frozen_pi05",
+    "render_backend": {
+      "vendor": "Intel",
+      "renderer": "Intel(R) Arc(TM) Pro Graphics",
+      "version": "4.6.0 - Build 32.0.101.6078"
+    },
+    "bootstrap_backend": {
+      "vendor": "Intel",
+      "renderer": "Intel(R) Arc(TM) Pro Graphics",
+      "version": "4.6.0 - Build 32.0.101.6078"
+    },
+    "success": false,
+    "closest_distance_mm": 233.42204256142668,
+    "contact_s": 0.0,
+    "eligible_s": 0.0,
+    "valid_hold_s": 0.0,
+    "interventions": {
+      "action_clipped": 144,
+      "translation_speed": 231,
+      "workspace": 299,
+      "cup_tilt": 121,
+      "rotation_speed": 11,
+      "joint_target_speed": 1
+    },
+    "simulated_seconds": 20.0,
+    "policy_calls": 80
+  },
+  {
+    "profile": "suction_upright",
+    "scene_seed": 42,
+    "policy_noise_seed": 0,
+    "directory": "runs/seed_diagnosis/adapter_audit/suction_upright/scene_42_noise_0",
+    "controller_source": "frozen_pi05",
+    "render_backend": {
+      "vendor": "Intel",
+      "renderer": "Intel(R) Arc(TM) Pro Graphics",
+      "version": "4.6.0 - Build 32.0.101.6078"
+    },
+    "bootstrap_backend": {
+      "vendor": "Intel",
+      "renderer": "Intel(R) Arc(TM) Pro Graphics",
+      "version": "4.6.0 - Build 32.0.101.6078"
+    },
+    "success": false,
+    "closest_distance_mm": 0.5910186529530943,
+    "contact_s": 4.336,
+    "eligible_s": 4.32,
+    "valid_hold_s": 0.22200000000000017,
+    "interventions": {
+      "translation_speed": 351,
+      "action_clipped": 115,
+      "cup_tilt": 191,
+      "workspace": 286,
+      "rotation_speed": 5
+    },
+    "simulated_seconds": 20.0,
+    "policy_calls": 80
+  },
+  {
+    "profile": "suction_upright",
+    "scene_seed": 42,
+    "policy_noise_seed": 1,
+    "directory": "runs/seed_diagnosis/adapter_audit/suction_upright/scene_42_noise_1",
+    "controller_source": "frozen_pi05",
+    "render_backend": {
+      "vendor": "Intel",
+      "renderer": "Intel(R) Arc(TM) Pro Graphics",
+      "version": "4.6.0 - Build 32.0.101.6078"
+    },
+    "bootstrap_backend": {
+      "vendor": "Intel",
+      "renderer": "Intel(R) Arc(TM) Pro Graphics",
+      "version": "4.6.0 - Build 32.0.101.6078"
+    },
+    "success": false,
+    "closest_distance_mm": 160.52964552558683,
+    "contact_s": 0.0,
+    "eligible_s": 0.0,
+    "valid_hold_s": 0.0,
+    "interventions": {
+      "action_clipped": 131,
+      "translation_speed": 259,
+      "workspace": 247,
+      "cup_tilt": 95
+    },
+    "simulated_seconds": 20.0,
+    "policy_calls": 80
+  },
+  {
+    "profile": "reference_scale_audit",
+    "scene_seed": 0,
+    "policy_noise_seed": 42,
+    "directory": "runs/seed_diagnosis/adapter_audit/reference_scale_audit/scene_0_noise_42",
+    "controller_source": "frozen_pi05",
+    "render_backend": {
+      "vendor": "Intel",
+      "renderer": "Intel(R) Arc(TM) Pro Graphics",
+      "version": "4.6.0 - Build 32.0.101.6078"
+    },
+    "bootstrap_backend": {
+      "vendor": "Intel",
+      "renderer": "Intel(R) Arc(TM) Pro Graphics",
+      "version": "4.6.0 - Build 32.0.101.6078"
+    },
+    "success": false,
+    "closest_distance_mm": 234.95768843149202,
+    "contact_s": 0.0,
+    "eligible_s": 0.0,
+    "valid_hold_s": 0.0,
+    "interventions": {
+      "action_clipped": 126,
+      "workspace": 247,
+      "joint_target_speed": 7
+    },
+    "simulated_seconds": 20.0,
+    "policy_calls": 80
+  },
+  {
+    "profile": "reference_scale_audit",
+    "scene_seed": 1,
+    "policy_noise_seed": 42,
+    "directory": "runs/seed_diagnosis/adapter_audit/reference_scale_audit/scene_1_noise_42",
+    "controller_source": "frozen_pi05",
+    "render_backend": {
+      "vendor": "Intel",
+      "renderer": "Intel(R) Arc(TM) Pro Graphics",
+      "version": "4.6.0 - Build 32.0.101.6078"
+    },
+    "bootstrap_backend": {
+      "vendor": "Intel",
+      "renderer": "Intel(R) Arc(TM) Pro Graphics",
+      "version": "4.6.0 - Build 32.0.101.6078"
+    },
+    "success": false,
+    "closest_distance_mm": 233.42204256142668,
+    "contact_s": 0.0,
+    "eligible_s": 0.0,
+    "valid_hold_s": 0.0,
+    "interventions": {
+      "action_clipped": 140,
+      "workspace": 343,
+      "joint_target_speed": 5
+    },
+    "simulated_seconds": 20.0,
+    "policy_calls": 80
+  },
+  {
+    "profile": "reference_scale_audit",
+    "scene_seed": 42,
+    "policy_noise_seed": 42,
+    "directory": "runs/seed_diagnosis/adapter_audit/reference_scale_audit/scene_42_noise_42",
+    "controller_source": "frozen_pi05",
+    "render_backend": {
+      "vendor": "Intel",
+      "renderer": "Intel(R) Arc(TM) Pro Graphics",
+      "version": "4.6.0 - Build 32.0.101.6078"
+    },
+    "bootstrap_backend": {
+      "vendor": "Intel",
+      "renderer": "Intel(R) Arc(TM) Pro Graphics",
+      "version": "4.6.0 - Build 32.0.101.6078"
+    },
+    "success": false,
+    "closest_distance_mm": 200.61693445365106,
+    "contact_s": 0.0,
+    "eligible_s": 0.0,
+    "valid_hold_s": 0.0,
+    "interventions": {
+      "action_clipped": 160,
+      "workspace": 319,
+      "joint_target_speed": 2
+    },
+    "simulated_seconds": 20.0,
+    "policy_calls": 80
+  },
+  {
+    "profile": "suction_upright",
+    "scene_seed": 2,
+    "policy_noise_seed": 42,
+    "directory": "runs/seed_diagnosis/adapter_audit/suction_upright/scene_2_noise_42",
+    "controller_source": "frozen_pi05",
+    "render_backend": {
+      "vendor": "Intel",
+      "renderer": "Intel(R) Arc(TM) Pro Graphics",
+      "version": "4.6.0 - Build 32.0.101.6078"
+    },
+    "bootstrap_backend": {
+      "vendor": "Intel",
+      "renderer": "Intel(R) Arc(TM) Pro Graphics",
+      "version": "4.6.0 - Build 32.0.101.6078"
+    },
+    "success": false,
+    "closest_distance_mm": 3.713211250173388,
+    "contact_s": 0.0,
+    "eligible_s": 0.0,
+    "valid_hold_s": 0.0,
+    "interventions": {
+      "action_clipped": 144,
+      "translation_speed": 265,
+      "cup_tilt": 169,
+      "workspace": 210,
+      "joint_target_speed": 1
+    },
+    "simulated_seconds": 20.0,
+    "policy_calls": 80
+  },
+  {
+    "profile": "suction_upright",
+    "scene_seed": 3,
+    "policy_noise_seed": 42,
+    "directory": "runs/seed_diagnosis/adapter_audit/suction_upright/scene_3_noise_42",
+    "controller_source": "frozen_pi05",
+    "render_backend": {
+      "vendor": "Intel",
+      "renderer": "Intel(R) Arc(TM) Pro Graphics",
+      "version": "4.6.0 - Build 32.0.101.6078"
+    },
+    "bootstrap_backend": {
+      "vendor": "Intel",
+      "renderer": "Intel(R) Arc(TM) Pro Graphics",
+      "version": "4.6.0 - Build 32.0.101.6078"
+    },
+    "success": false,
+    "closest_distance_mm": 169.65908493539658,
+    "contact_s": 0.0,
+    "eligible_s": 0.0,
+    "valid_hold_s": 0.0,
+    "interventions": {
+      "action_clipped": 144,
+      "translation_speed": 248,
+      "workspace": 272,
+      "rotation_speed": 3,
+      "cup_tilt": 86
+    },
+    "simulated_seconds": 20.0,
+    "policy_calls": 80
+  },
+  {
+    "profile": "suction_upright",
+    "scene_seed": 4,
+    "policy_noise_seed": 42,
+    "directory": "runs/seed_diagnosis/adapter_audit/suction_upright/scene_4_noise_42",
+    "controller_source": "frozen_pi05",
+    "render_backend": {
+      "vendor": "Intel",
+      "renderer": "Intel(R) Arc(TM) Pro Graphics",
+      "version": "4.6.0 - Build 32.0.101.6078"
+    },
+    "bootstrap_backend": {
+      "vendor": "Intel",
+      "renderer": "Intel(R) Arc(TM) Pro Graphics",
+      "version": "4.6.0 - Build 32.0.101.6078"
+    },
+    "success": false,
+    "closest_distance_mm": 107.15639469982109,
+    "contact_s": 0.0,
+    "eligible_s": 0.0,
+    "valid_hold_s": 0.0,
+    "interventions": {
+      "action_clipped": 148,
+      "translation_speed": 252,
+      "cup_tilt": 129,
+      "workspace": 153
+    },
+    "simulated_seconds": 20.0,
+    "policy_calls": 80
+  },
+  {
+    "profile": "suction_upright",
+    "scene_seed": 5,
+    "policy_noise_seed": 42,
+    "directory": "runs/seed_diagnosis/adapter_audit/suction_upright/scene_5_noise_42",
+    "controller_source": "frozen_pi05",
+    "render_backend": {
+      "vendor": "Intel",
+      "renderer": "Intel(R) Arc(TM) Pro Graphics",
+      "version": "4.6.0 - Build 32.0.101.6078"
+    },
+    "bootstrap_backend": {
+      "vendor": "Intel",
+      "renderer": "Intel(R) Arc(TM) Pro Graphics",
+      "version": "4.6.0 - Build 32.0.101.6078"
+    },
+    "success": false,
+    "closest_distance_mm": 229.6524126991474,
+    "contact_s": 0.0,
+    "eligible_s": 0.0,
+    "valid_hold_s": 0.0,
+    "interventions": {
+      "action_clipped": 173,
+      "translation_speed": 226,
+      "workspace": 268,
+      "cup_tilt": 116,
+      "rotation_speed": 21,
+      "joint_target_speed": 1
+    },
+    "simulated_seconds": 20.0,
+    "policy_calls": 80
+  }
+]

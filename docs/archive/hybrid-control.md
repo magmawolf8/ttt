@@ -1,5 +1,7 @@
 # RGB centering, pickup and scene variations
 
+> Development record from 16 October 2026. Read the [current results](../results.md) for the project status. References marked **local artifact** identify files in the original workspace; they are not included in this site.
+
 **Archived experiment.** The user subsequently requested removal of RGB centering and scripted lifting. `rgb_servo.py`, its audit/replay tools, the seal-switch accessor and all auxiliary CLI modes have been removed from the active runtime. The results and source snapshots below are retained as historical evidence, not current behavior. See [unassisted seed runs](unassisted-seeds.md) for the current pipeline. All commands and default choices below describe the historical implementation and no longer apply to the current runtime.
 
 Development experiments on 2026-10-16. No training, task-specific checkpoint edits, smaller cup or relaxed suction criteria were used. No controller reads simulator card pose, depth or segmentation IDs. The successful result below is **hybrid control**, not a claim that frozen pi0.5 learned suction pickup.
@@ -23,9 +25,9 @@ The first implementation disabled the guard again above 120 mm. Policy upward mo
 
 Artifacts:
 
-- [Centering-only result](../runs/pi05_rgb_centering_latched_seed42/results.json), [diagnostics](../runs/pi05_rgb_centering_latched_seed42/diagnostics.json), [video](../runs/pi05_rgb_centering_latched_seed42/episode_dashboard.mp4).
-- [Successful hybrid result](../runs/pi05_rgb_pickup_seed42/results.json), [diagnostics](../runs/pi05_rgb_pickup_seed42/diagnostics.json), [20-second video](../runs/pi05_rgb_pickup_seed42/episode_dashboard.mp4).
-- [Initial failed guard](../runs/pi05_rgb_centering_seed42/results.json), [RGB audit](../runs/rgb_servo_audit/results.json), [unchanged-mechanics regression checks](../runs/simulator_validation_rgb_revision/results.json).
+- Centering-only result (`runs/pi05_rgb_centering_latched_seed42/results.json`; local artifact), diagnostics (`runs/pi05_rgb_centering_latched_seed42/diagnostics.json`; local artifact), video (`runs/pi05_rgb_centering_latched_seed42/episode_dashboard.mp4`; local artifact).
+- Successful hybrid result (`runs/pi05_rgb_pickup_seed42/results.json`; local artifact), diagnostics (`runs/pi05_rgb_pickup_seed42/diagnostics.json`; local artifact), 20-second video (`runs/pi05_rgb_pickup_seed42/episode_dashboard.mp4`; local artifact).
+- Initial failed guard (`runs/pi05_rgb_centering_seed42/results.json`; local artifact), RGB audit (`runs/rgb_servo_audit/results.json`; local artifact), unchanged-mechanics regression checks (`runs/simulator_validation_rgb_revision/results.json`; local artifact).
 
 The centering-only run established that the original edge-overhang barrier was removable using camera pixels. At command rate, its final estimate was about 0.43 mm from the original card center, and its final TCP-to-estimate XY error about 0.40 mm. It accumulated 13.302 s of contact/eligible physics samples and 11.256 s attached. However, the policy repeatedly opened vacuum and did not sustain a lift. Gripper closure produces no corresponding finger motion in this suction embodiment; the policy also ignores proprioception, so it lacks that potential grasp-state cue. This is a plausible explanation for repeated grasp attempts, not an isolated causal proof.
 
@@ -56,7 +58,7 @@ The initial failed guard's actual first wrist input differed from the earlier ba
 | `red_card` | Untextured red back, intentionally outside blue detector support |
 | `missing` | Card outside the controller workspace |
 
-The reset detector audit passed all seven scenario expectations: <5 mm error on the five supported setups, rejection for red/missing targets. Rejection holds robot translation/rotation and disables vacuum. The complete episode suite preserves individual videos and reports under `runs/rgb_scenarios`; [suite summary](../runs/rgb_scenarios/summary.json).
+The reset detector audit passed all seven scenario expectations: <5 mm error on the five supported setups, rejection for red/missing targets. Rejection holds robot translation/rotation and disables vacuum. The complete episode suite preserves individual videos and reports under `runs/rgb_scenarios`; suite summary (`runs/rgb_scenarios/summary.json`; local artifact).
 
 The initial complete suite found successful pickup under dim lighting (119.69 mm maximum clearance, 10.03 s valid hold). Both changed-placement cases failed during approach. Final telemetry corrects an initial interpretation from sparse progress logs: they **did** briefly enter the 120 mm region (minimum TCP heights 117.26 mm rotated / 115.82 mm left), activating the latched XY guard for 217 / 191 commands respectively, but subsequently rose again without contact. Remaining vertical approach/descent therefore matters even after XY guidance. Red and missing targets produced zero joint displacement, zero suction events and vacuum off throughout all 400 commands, which is the intended rejection behavior. These negative cases are not pickup successes.
 
@@ -64,7 +66,7 @@ The initial complete suite found successful pickup under dim lighting (119.69 mm
 
 The original `heavy_slippery` run is **invalid as a mass/friction comparison**. Calling `mj_setConst` to recompute mass-dependent constants overwrote live `MjData` using the model's default pose. This moved the card to (0.45,0) and changed the robot's initial configuration, confounding the intended variation. The artifact is retained, marked invalid in the aggregate metrics, and excluded from pickup claims.
 
-The corrected implementation saves/restores the complete `mjSTATE_INTEGRATION` state around constant recomputation. A direct check after the scenario's settling period measured exactly zero TCP displacement, zero card XY displacement and zero arm joint-position error relative to the original reset, while card mass was correctly 0.009 kg. [State preservation evidence](../runs/rgb_servo_audit/state_preservation.json). This repair preserves the seeded pose and changes only the intended physical properties.
+The corrected implementation saves/restores the complete `mjSTATE_INTEGRATION` state around constant recomputation. A direct check after the scenario's settling period measured exactly zero TCP displacement, zero card XY displacement and zero arm joint-position error relative to the original reset, while card mass was correctly 0.009 kg. State preservation evidence (`runs/rgb_servo_audit/state_preservation.json`; local artifact). This repair preserves the seeded pose and changes only the intended physical properties.
 
 ### Follow-up controller tests
 
@@ -84,7 +86,7 @@ These changes do not silently replace the original centering-only comparison or 
 | Corrected 9 g / low friction | Not run as a live-policy episode; see replay below | No pickup; policy hovered |
 | Red back / missing target | **Rejection checks pass**, stationary with vacuum off | Not run |
 
-All listed live episodes completed 20 simulated seconds with 400 commands and 80 GPU policy calls. The left-placement success's maximum attached TCP XY excursion was 0.245 mm. [Follow-up summary](../runs/rgb_followup/summary.json), [left-placement GPU video](../runs/rgb_followup/left/episode_dashboard.mp4), [all development metrics](../runs/rgb_experiments/summary.json).
+All listed live episodes completed 20 simulated seconds with 400 commands and 80 GPU policy calls. The left-placement success's maximum attached TCP XY excursion was 0.245 mm. Follow-up summary (`runs/rgb_followup/summary.json`; local artifact), left-placement GPU video (`runs/rgb_followup/left/episode_dashboard.mp4`; local artifact), all development metrics (`runs/rgb_experiments/summary.json`; local artifact).
 
 **Default choice:** keep final-approach centering when `--rgb-pickup` is selected. Early centering helps the left placement but makes the baseline hover, so it remains an explicit experimental flag rather than a universal improvement. The XY anchor and state-preservation repair are retained. Across these examples the successful frozen-policy pipeline requires explicit RGB and seal/lift assistance; pure learned pickup remains unachieved. These outcomes do not establish a success rate.
 
@@ -97,7 +99,7 @@ All listed live episodes completed 20 simulated seconds with 400 commands and 80
 | Baseline, anchored completion | 119.69 mm | 11.530 s | 0.218 mm |
 | Corrected 9 g / friction 0.25 | 119.67 mm | 11.514 s | 0.231 mm |
 
-Both formed one seal without release. The original unanchored baseline excursion was 7.924 mm. [Replay reports and explicit controller labels](../runs/rgb_replay_regression/summary.json), [baseline replay video](../runs/rgb_replay_regression/baseline/replay_regression.mp4), [heavy-card replay video](../runs/rgb_replay_regression/heavy_slippery/replay_regression.mp4). The heavier-card result demonstrates adequate simulated holding under these gentle trajectories, without implying a live-policy success on that variant.
+Both formed one seal without release. The original unanchored baseline excursion was 7.924 mm. Replay reports and explicit controller labels (`runs/rgb_replay_regression/summary.json`; local artifact), baseline replay video (`runs/rgb_replay_regression/baseline/replay_regression.mp4`; local artifact), heavy-card replay video (`runs/rgb_replay_regression/heavy_slippery/replay_regression.mp4`; local artifact). The heavier-card result demonstrates adequate simulated holding under these gentle trajectories, without implying a live-policy success on that variant.
 
 ## Reproduce
 
@@ -112,9 +114,9 @@ python validate_sim.py --output-dir runs/my_mechanics_checks
 python tools/summarize_rgb_experiments.py
 ```
 
-The suite reuses a single frozen GPU model serially; concurrent full models do not fit 8 GB VRAM. `--scenario NAME` also works directly with `run_policy.py`. The comparison tool creates [machine-readable metrics](../runs/rgb_experiments/summary.json) and a [20-second comparison video](../runs/rgb_experiments/edge_fix_comparison.mp4).
+The suite reuses a single frozen GPU model serially; concurrent full models do not fit 8 GB VRAM. `--scenario NAME` also works directly with `run_policy.py`. The comparison tool creates machine-readable metrics (`runs/rgb_experiments/summary.json`; local artifact) and a 20-second comparison video (`runs/rgb_experiments/edge_fix_comparison.mp4`; local artifact).
 
-Final verification: all 13 new live GPU episode videos and both replay videos contain exactly 400 frames at 20 fps. Modified Python files compile, local documentation links resolve, all RGB reset/scenario checks pass, and all positive/negative mechanics regression checks pass. [Verification record](../runs/rgb_experiments/verification.json).
+Final verification: all 13 new live GPU episode videos and both replay videos contain exactly 400 frames at 20 fps. Modified Python files compile, local documentation links resolve, all RGB reset/scenario checks pass, and all positive/negative mechanics regression checks pass. Verification record (`runs/rgb_experiments/verification.json`; local artifact).
 
 ## Limits
 

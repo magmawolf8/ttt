@@ -1,0 +1,182 @@
+{
+  "checks": {
+    "no_seed_conditioned_physics_or_policy_branches": true,
+    "all_model_robot_camera_and_profile_invariants_pass": true
+  },
+  "seed_conditionals": {
+    "card_sim.py": [],
+    "pi05_policy.py": [],
+    "pi05_torch.py": []
+  },
+  "trials": [
+    {
+      "profile": "suction_upright",
+      "seed": 0,
+      "model_arrays_identical": true,
+      "robot_qpos_identical": true,
+      "camera_extrinsics_identical": true,
+      "controller_profile_identical": true,
+      "card_xy_evaluation_only_m": [
+        0.43237440565179325,
+        -0.09180529521262515
+      ]
+    },
+    {
+      "profile": "suction_upright",
+      "seed": 1,
+      "model_arrays_identical": true,
+      "robot_qpos_identical": true,
+      "camera_extrinsics_identical": true,
+      "controller_profile_identical": true,
+      "card_xy_evaluation_only_m": [
+        0.514055643559158,
+        -0.07116807745606986
+      ]
+    },
+    {
+      "profile": "suction_upright",
+      "seed": 42,
+      "model_arrays_identical": true,
+      "robot_qpos_identical": true,
+      "camera_extrinsics_identical": true,
+      "controller_profile_identical": true,
+      "card_xy_evaluation_only_m": [
+        0.4526654127702463,
+        0.07171958398227649
+      ]
+    },
+    {
+      "profile": "suction_upright",
+      "seed": 2,
+      "model_arrays_identical": true,
+      "robot_qpos_identical": true,
+      "camera_extrinsics_identical": true,
+      "controller_profile_identical": true,
+      "card_xy_evaluation_only_m": [
+        0.4358189372096977,
+        0.0628451481188207
+      ]
+    },
+    {
+      "profile": "suction_upright",
+      "seed": 3,
+      "model_arrays_identical": true,
+      "robot_qpos_identical": true,
+      "camera_extrinsics_identical": true,
+      "controller_profile_identical": true,
+      "card_xy_evaluation_only_m": [
+        0.4284172607914995,
+        0.0602548930412599
+      ]
+    },
+    {
+      "profile": "suction_upright",
+      "seed": 4,
+      "model_arrays_identical": true,
+      "robot_qpos_identical": true,
+      "camera_extrinsics_identical": true,
+      "controller_profile_identical": true,
+      "card_xy_evaluation_only_m": [
+        0.46135930633751365,
+        0.09524874114160262
+      ]
+    },
+    {
+      "profile": "suction_upright",
+      "seed": 5,
+      "model_arrays_identical": true,
+      "robot_qpos_identical": true,
+      "camera_extrinsics_identical": true,
+      "controller_profile_identical": true,
+      "card_xy_evaluation_only_m": [
+        0.4969528947682697,
+        0.0030651122084918137
+      ]
+    },
+    {
+      "profile": "reference_scale_audit",
+      "seed": 0,
+      "model_arrays_identical": true,
+      "robot_qpos_identical": true,
+      "camera_extrinsics_identical": true,
+      "controller_profile_identical": true,
+      "card_xy_evaluation_only_m": [
+        0.43237440565179325,
+        -0.09180529521262515
+      ]
+    },
+    {
+      "profile": "reference_scale_audit",
+      "seed": 1,
+      "model_arrays_identical": true,
+      "robot_qpos_identical": true,
+      "camera_extrinsics_identical": true,
+      "controller_profile_identical": true,
+      "card_xy_evaluation_only_m": [
+        0.514055643559158,
+        -0.07116807745606986
+      ]
+    },
+    {
+      "profile": "reference_scale_audit",
+      "seed": 42,
+      "model_arrays_identical": true,
+      "robot_qpos_identical": true,
+      "camera_extrinsics_identical": true,
+      "controller_profile_identical": true,
+      "card_xy_evaluation_only_m": [
+        0.4526654127702463,
+        0.07171958398227649
+      ]
+    },
+    {
+      "profile": "reference_scale_audit",
+      "seed": 2,
+      "model_arrays_identical": true,
+      "robot_qpos_identical": true,
+      "camera_extrinsics_identical": true,
+      "controller_profile_identical": true,
+      "card_xy_evaluation_only_m": [
+        0.4358189372096977,
+        0.0628451481188207
+      ]
+    },
+    {
+      "profile": "reference_scale_audit",
+      "seed": 3,
+      "model_arrays_identical": true,
+      "robot_qpos_identical": true,
+      "camera_extrinsics_identical": true,
+      "controller_profile_identical": true,
+      "card_xy_evaluation_only_m": [
+        0.4284172607914995,
+        0.0602548930412599
+      ]
+    },
+    {
+      "profile": "reference_scale_audit",
+      "seed": 4,
+      "model_arrays_identical": true,
+      "robot_qpos_identical": true,
+      "camera_extrinsics_identical": true,
+      "controller_profile_identical": true,
+      "card_xy_evaluation_only_m": [
+        0.46135930633751365,
+        0.09524874114160262
+      ]
+    },
+    {
+      "profile": "reference_scale_audit",
+      "seed": 5,
+      "model_arrays_identical": true,
+      "robot_qpos_identical": true,
+      "camera_extrinsics_identical": true,
+      "controller_profile_identical": true,
+      "card_xy_evaluation_only_m": [
+        0.4969528947682697,
+        0.0030651122084918137
+      ]
+    }
+  ],
+  "limitation": "This rules out seed-conditioned settings, not overfitting of globally chosen hyperparameters. Uniform adapter ablations and additional seeds are evaluated separately."
+}

@@ -1,0 +1,15 @@
+{
+  "chunk": 21,
+  "reconstructed_noise": true,
+  "probes": [
+    {
+      "name": "original",
+      "max_difference_from_saved_actions": 0.0
+    },
+    {
+      "name": "current",
+      "max_difference_from_saved_actions": 0.0
+    }
+  ],
+  "max_action_difference_between_inputs": 0.006367299712300323
+}

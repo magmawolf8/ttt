@@ -1,0 +1,217 @@
+[
+  {
+    "label": "before_load",
+    "gl_renderer": "Intel(R) Arc(TM) Pro Graphics",
+    "vs_before_policy_load": {
+      "observation/image": {
+        "changed_values": 0,
+        "mean_absolute_error": 0.0,
+        "max_absolute_error": 0.0
+      },
+      "observation/wrist_image": {
+        "changed_values": 0,
+        "mean_absolute_error": 0.0,
+        "max_absolute_error": 0.0
+      },
+      "observation/state": {
+        "changed_values": 0,
+        "mean_absolute_error": 0.0,
+        "max_absolute_error": 0.0
+      }
+    },
+    "different_model_arrays": [],
+    "different_data_arrays": [
+      "efc_AR_rownnz"
+    ]
+  },
+  {
+    "label": "same_context_after_load",
+    "gl_renderer": "Intel(R) Arc(TM) Pro Graphics",
+    "vs_before_policy_load": {
+      "observation/image": {
+        "changed_values": 0,
+        "mean_absolute_error": 0.0,
+        "max_absolute_error": 0.0
+      },
+      "observation/wrist_image": {
+        "changed_values": 0,
+        "mean_absolute_error": 0.0,
+        "max_absolute_error": 0.0
+      },
+      "observation/state": {
+        "changed_values": 0,
+        "mean_absolute_error": 0.0,
+        "max_absolute_error": 0.0
+      }
+    },
+    "different_model_arrays": [],
+    "different_data_arrays": []
+  },
+  {
+    "label": "new_context_0_after_load",
+    "gl_renderer": "Intel(R) Arc(TM) Pro Graphics",
+    "vs_before_policy_load": {
+      "observation/image": {
+        "changed_values": 0,
+        "mean_absolute_error": 0.0,
+        "max_absolute_error": 0.0
+      },
+      "observation/wrist_image": {
+        "changed_values": 0,
+        "mean_absolute_error": 0.0,
+        "max_absolute_error": 0.0
+      },
+      "observation/state": {
+        "changed_values": 0,
+        "mean_absolute_error": 0.0,
+        "max_absolute_error": 0.0
+      }
+    },
+    "different_model_arrays": [],
+    "different_data_arrays": []
+  },
+  {
+    "label": "new_context_0_after_infer",
+    "gl_renderer": "Intel(R) Arc(TM) Pro Graphics",
+    "vs_before_policy_load": {
+      "observation/image": {
+        "changed_values": 0,
+        "mean_absolute_error": 0.0,
+        "max_absolute_error": 0.0
+      },
+      "observation/wrist_image": {
+        "changed_values": 0,
+        "mean_absolute_error": 0.0,
+        "max_absolute_error": 0.0
+      },
+      "observation/state": {
+        "changed_values": 0,
+        "mean_absolute_error": 0.0,
+        "max_absolute_error": 0.0
+      }
+    },
+    "different_model_arrays": [],
+    "different_data_arrays": [
+      "efc_AR_rownnz"
+    ]
+  },
+  {
+    "label": "new_context_1_after_load",
+    "gl_renderer": "Intel(R) Arc(TM) Pro Graphics",
+    "vs_before_policy_load": {
+      "observation/image": {
+        "changed_values": 0,
+        "mean_absolute_error": 0.0,
+        "max_absolute_error": 0.0
+      },
+      "observation/wrist_image": {
+        "changed_values": 0,
+        "mean_absolute_error": 0.0,
+        "max_absolute_error": 0.0
+      },
+      "observation/state": {
+        "changed_values": 0,
+        "mean_absolute_error": 0.0,
+        "max_absolute_error": 0.0
+      }
+    },
+    "different_model_arrays": [],
+    "different_data_arrays": []
+  },
+  {
+    "label": "new_context_1_after_infer",
+    "gl_renderer": "Intel(R) Arc(TM) Pro Graphics",
+    "vs_before_policy_load": {
+      "observation/image": {
+        "changed_values": 0,
+        "mean_absolute_error": 0.0,
+        "max_absolute_error": 0.0
+      },
+      "observation/wrist_image": {
+        "changed_values": 0,
+        "mean_absolute_error": 0.0,
+        "max_absolute_error": 0.0
+      },
+      "observation/state": {
+        "changed_values": 0,
+        "mean_absolute_error": 0.0,
+        "max_absolute_error": 0.0
+      }
+    },
+    "different_model_arrays": [],
+    "different_data_arrays": [
+      "efc_AR_rownnz"
+    ]
+  },
+  {
+    "label": "new_context_2_after_load",
+    "gl_renderer": "Intel(R) Arc(TM) Pro Graphics",
+    "vs_before_policy_load": {
+      "observation/image": {
+        "changed_values": 0,
+        "mean_absolute_error": 0.0,
+        "max_absolute_error": 0.0
+      },
+      "observation/wrist_image": {
+        "changed_values": 0,
+        "mean_absolute_error": 0.0,
+        "max_absolute_error": 0.0
+      },
+      "observation/state": {
+        "changed_values": 0,
+        "mean_absolute_error": 0.0,
+        "max_absolute_error": 0.0
+      }
+    },
+    "different_model_arrays": [],
+    "different_data_arrays": []
+  },
+  {
+    "label": "new_context_2_after_infer",
+    "gl_renderer": "Intel(R) Arc(TM) Pro Graphics",
+    "vs_before_policy_load": {
+      "observation/image": {
+        "changed_values": 0,
+        "mean_absolute_error": 0.0,
+        "max_absolute_error": 0.0
+      },
+      "observation/wrist_image": {
+        "changed_values": 0,
+        "mean_absolute_error": 0.0,
+        "max_absolute_error": 0.0
+      },
+      "observation/state": {
+        "changed_values": 0,
+        "mean_absolute_error": 0.0,
+        "max_absolute_error": 0.0
+      }
+    },
+    "different_model_arrays": [],
+    "different_data_arrays": [
+      "efc_AR_rownnz"
+    ]
+  },
+  {
+    "label": "original_context_after_inference",
+    "gl_renderer": "Intel(R) Arc(TM) Pro Graphics",
+    "vs_before_policy_load": {
+      "observation/image": {
+        "changed_values": 0,
+        "mean_absolute_error": 0.0,
+        "max_absolute_error": 0.0
+      },
+      "observation/wrist_image": {
+        "changed_values": 0,
+        "mean_absolute_error": 0.0,
+        "max_absolute_error": 0.0
+      },
+      "observation/state": {
+        "changed_values": 0,
+        "mean_absolute_error": 0.0,
+        "max_absolute_error": 0.0
+      }
+    },
+    "different_model_arrays": [],
+    "different_data_arrays": []
+  }
+]

@@ -1,0 +1,110 @@
+[
+  {
+    "condition": "upstream_default",
+    "seed": 0,
+    "relative_l2_vs_jax": 0.42226170875439356,
+    "first_five_relative_l2_vs_jax": 0.018278584536117012,
+    "maximum_xyz_difference_mm": 1.5374860680878177,
+    "first_five_maximum_xyz_difference_mm": 1.1635219069123293,
+    "all_gripper_signs_equal": false,
+    "executed_gripper_signs_equal": true,
+    "maximum_difference_from_recorded_cuda": 0.0,
+    "wall_seconds": 1.735000000000582
+  },
+  {
+    "condition": "upstream_default",
+    "seed": 1,
+    "relative_l2_vs_jax": 0.007272411864854844,
+    "first_five_relative_l2_vs_jax": 0.004056240559518072,
+    "maximum_xyz_difference_mm": 0.5335422807306034,
+    "first_five_maximum_xyz_difference_mm": 0.27369276617169036,
+    "all_gripper_signs_equal": true,
+    "executed_gripper_signs_equal": true,
+    "maximum_difference_from_recorded_cuda": 0.0,
+    "wall_seconds": 0.7969999999986612
+  },
+  {
+    "condition": "upstream_default",
+    "seed": 42,
+    "relative_l2_vs_jax": 0.004562702260004202,
+    "first_five_relative_l2_vs_jax": 0.004372815804666676,
+    "maximum_xyz_difference_mm": 0.22994125739336235,
+    "first_five_maximum_xyz_difference_mm": 0.22994125739336235,
+    "all_gripper_signs_equal": true,
+    "executed_gripper_signs_equal": true,
+    "maximum_difference_from_recorded_cuda": 0.0,
+    "wall_seconds": 0.7810000000026776
+  },
+  {
+    "condition": "float32_logits_postscale",
+    "seed": 0,
+    "relative_l2_vs_jax": 0.1367236179872284,
+    "first_five_relative_l2_vs_jax": 0.014051059093820996,
+    "maximum_xyz_difference_mm": 1.012415738672015,
+    "first_five_maximum_xyz_difference_mm": 0.9468855849415092,
+    "all_gripper_signs_equal": true,
+    "executed_gripper_signs_equal": true,
+    "maximum_difference_from_recorded_cuda": 1.0684818636932372,
+    "wall_seconds": 0.75
+  },
+  {
+    "condition": "float32_logits_postscale",
+    "seed": 1,
+    "relative_l2_vs_jax": 0.011306091984207518,
+    "first_five_relative_l2_vs_jax": 0.006566801998788834,
+    "maximum_xyz_difference_mm": 0.928722713878749,
+    "first_five_maximum_xyz_difference_mm": 0.5240992766559149,
+    "all_gripper_signs_equal": true,
+    "executed_gripper_signs_equal": true,
+    "maximum_difference_from_recorded_cuda": 0.007903608662962913,
+    "wall_seconds": 0.8590000000040163
+  },
+  {
+    "condition": "float32_logits_postscale",
+    "seed": 42,
+    "relative_l2_vs_jax": 0.004770199026366902,
+    "first_five_relative_l2_vs_jax": 0.0037020027741510517,
+    "maximum_xyz_difference_mm": 0.4383307895302724,
+    "first_five_maximum_xyz_difference_mm": 0.17702746022641436,
+    "all_gripper_signs_equal": true,
+    "executed_gripper_signs_equal": true,
+    "maximum_difference_from_recorded_cuda": 0.006736420965254286,
+    "wall_seconds": 0.875
+  },
+  {
+    "condition": "float32_logits_prescale",
+    "seed": 0,
+    "relative_l2_vs_jax": 0.1367236179872284,
+    "first_five_relative_l2_vs_jax": 0.014051059093820996,
+    "maximum_xyz_difference_mm": 1.012415738672015,
+    "first_five_maximum_xyz_difference_mm": 0.9468855849415092,
+    "all_gripper_signs_equal": true,
+    "executed_gripper_signs_equal": true,
+    "maximum_difference_from_recorded_cuda": 1.0684818636932372,
+    "wall_seconds": 0.8129999999946449
+  },
+  {
+    "condition": "float32_logits_prescale",
+    "seed": 1,
+    "relative_l2_vs_jax": 0.011306091984207518,
+    "first_five_relative_l2_vs_jax": 0.006566801998788834,
+    "maximum_xyz_difference_mm": 0.928722713878749,
+    "first_five_maximum_xyz_difference_mm": 0.5240992766559149,
+    "all_gripper_signs_equal": true,
+    "executed_gripper_signs_equal": true,
+    "maximum_difference_from_recorded_cuda": 0.007903608662962913,
+    "wall_seconds": 0.8280000000013388
+  },
+  {
+    "condition": "float32_logits_prescale",
+    "seed": 42,
+    "relative_l2_vs_jax": 0.004770199026366902,
+    "first_five_relative_l2_vs_jax": 0.0037020027741510517,
+    "maximum_xyz_difference_mm": 0.4383307895302724,
+    "first_five_maximum_xyz_difference_mm": 0.17702746022641436,
+    "all_gripper_signs_equal": true,
+    "executed_gripper_signs_equal": true,
+    "maximum_difference_from_recorded_cuda": 0.006736420965254286,
+    "wall_seconds": 0.8130000000019209
+  }
+]

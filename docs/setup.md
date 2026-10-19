@@ -1,67 +1,89 @@
 # Setup and reproduction
 
-## Installed machine
+## Existing laptop environment
 
-Windows, 16 GB RAM, NVIDIA RTX 4070 Laptop GPU with 8,188 MiB VRAM. Conda environment: `C:\Users\heng\miniconda3\envs\simenv`, Python 3.11.17. Activate it with `conda activate simenv`, or invoke its `python.exe` directly.
+The working installation is Windows with 16 GB RAM and an RTX 4070 Laptop GPU (8,188 MiB VRAM). Use the `simenv` conda environment, normally at `%USERPROFILE%\miniconda3\envs\simenv`.
 
-The environment snapshot is [requirements-simenv.lock.txt](../requirements-simenv.lock.txt). Important versions: MuJoCo 3.3.7, NumPy 1.26.4, PyTorch 2.7.1+cu126, torchvision 0.22.1+cu126, Transformers 4.53.2 with OpenPI patches, JAX 0.5.3 (CPU), flax 0.10.2 and orbax 0.11.13. CUDA inference uses PyTorch; native Windows JAX remains the slow CPU fallback.
+| Dependency | Recorded version |
+| --- | --- |
+| Python | 3.11.17 |
+| MuJoCo | 3.3.7 |
+| PyTorch | 2.7.1+cu126 |
+| Transformers | 4.53.2 with pinned OpenPI patches |
+| JAX | 0.5.3, CPU |
+| NumPy | 1.26.4 |
 
-OpenPI is installed editable with `--no-deps`; its full dependency declaration includes unrelated training environments and Linux CUDA JAX packages. Install the pinned dependencies sequentially. An early overlapping pip installation left mixed NumPy files; removing/reinstalling NumPy 1.26.4 repaired that environment. No such repair is needed for the current installation.
+The complete machine snapshot is `requirements-simenv.lock.txt` at repository root. It includes editable-source references and a CUDA wheel, so treat it as a reconstruction aid rather than a portable environment lock.
 
-## Rebuild
+## Run an episode
+
+From the repository root:
+
+```powershell
+conda activate simenv
+python run_policy.py --backend cuda --seconds 20 --seed 42 --output-dir runs/my_episode
+python tools/run_scenarios.py --seeds 0 1 --output-dir runs/my_seed_sweep
+```
+
+Use a fresh output directory for each experiment. Runs save observations, raw actions, telemetry, physics diagnostics, source/configuration snapshots and MP4 videos. A 20-second episode executes 400 commands and 80 policy calls. Physics pauses during inference; video follows simulated time.
+
+Scene and policy sampling seeds are coupled by default. Hold sampling fixed to compare placements:
+
+```powershell
+python run_policy.py --backend cuda --seconds 20 --seed 0 --policy-noise-seed 42 --output-dir runs/my_scene0_noise42
+python tools/run_scenarios.py --seeds 0 1 --scenarios rotated left --output-dir runs/my_scenarios
+```
+
+`--policy-noise-seed` applies only to local CUDA inference. The default adapter is `suction_upright`; `--image-transform auto` uses its image convention. Other profiles and manual transforms are development ablations, not validated improvements.
+
+## Reconstruct the installation
+
+The downloaded `models/`, `vendor/`, `datasets/` and complete `runs/` directories are not committed. With conda and Git installed, run:
 
 ```powershell
 .\setup_simenv.ps1
 conda activate simenv
-python build_scene.py
 python validate_sim.py
 python tools/audit_adapter.py
 ```
 
-The bootstrap installs dependencies, checks out the source revisions below, applies the upstream Transformers patches, downloads the original public checkpoint and converts it for GPU inference. Original Transformers files are retained under `models/transformers-original`. The lock file is a snapshot containing local editable paths and a CUDA wheel; it is not a portable cross-platform lock.
+The setup script creates or reuses `simenv`, installs pinned dependencies, checks out source revisions, applies the upstream Transformers patches, builds the scene, downloads the original checkpoint and converts it for GPU inference. The original and converted checkpoints occupy approximately 12.4 GB and 6.7 GB. Conversion is layout/precision preparation, not training.
 
-## Run and record
+| Asset | Pinned source |
+| --- | --- |
+| OpenPI | `215abfb217dbac7d5f1273282331b9b1866c0479` |
+| UR description | `d4042c1f5123c86645cc5dbd650b4f461f697ee9` |
+| Checkpoint | `gs://openpi-assets/checkpoints/pi05_libero` |
+| Controller/camera reference used in audits | robosuite v1.4.1 |
+
+`vendor/reference` contains development reference material in the original workspace; it is not populated by the bootstrap and is not needed by ordinary policy episodes. Some diagnostic tools also require the saved historical observations named in their source; the small site evidence bundle does not replace complete run outputs.
+
+## Graphics and inference reproducibility
+
+On this hybrid laptop, create the first OpenGL context **before importing Torch**. The standalone runner does so naturally; the batch and seed-audit tools use `render_runtime.graphics_before_cuda()`. Reversing the order can select NVIDIA instead of Intel Arc Pro rendering, changing the camera pixels. Policy inference remains on RTX 4070 in either case.
+
+New reports record the GL vendor/renderer/version, model device and source/configuration hashes. Compare those along with scene/noise seeds. Matching them does not guarantee bit-exact pixels for a whole episode.
+
+The CUDA loader puts all parameters on `cuda:0` with no CPU weight offload; compilation is disabled. Fixed-input CUDA/JAX agreement is not uniform: the expanded seed-0 check failed its declared tolerance. See [results](results.md) before interpreting the two backends as numerically equivalent.
+
+## Inspection and diagnostics
 
 ```powershell
-# Frozen policy with the corrected adapter, no RGB assistance:
-python run_policy.py --backend cuda --seconds 20 --seed 42 --output-dir runs/my_unassisted_episode
-# Vary the scene while holding the policy's CUDA sampling seed fixed:
-python run_policy.py --backend cuda --seconds 20 --seed 0 --policy-noise-seed 42 --output-dir runs/my_scene0_noise42
-# Two unassisted seeds, reusing one frozen model:
-python tools/run_scenarios.py --seeds 0 1 --output-dir runs/my_seed_sweep
-# Optional scene variants, without auxiliary control:
-python tools/run_scenarios.py --seeds 0 1 --scenarios rotated left --output-dir runs/my_scenarios
-# View a passive scene; this does not start a policy:
+# Passive scene viewer and independent scripted checks:
 python view_scene.py
-# RGB camera images and scripted data recorder:
-python card_sim.py
+python validate_sim.py
+
+# Scripted demonstrations use card ground truth and are labelled separately:
 python collect_demos.py
-# Optional slow CPU path or remote OpenPI server:
+
+# Slow CPU fallback or an existing remote OpenPI server:
 python run_policy.py --backend cpu --chunks 3
 python run_policy.py --server HOST --port 8000 --seconds 20
+
+# Reproduce the development audit; requires its saved historical inputs:
+python tools/audit_policy_adaptation.py --output-dir runs/my_adapter_audit
 ```
 
-Use a fresh output directory for every experiment. Videos play at simulated time, with physics paused during inference. Runs save raw actions, observations, telemetry, intervention logs, evaluator diagnostics and MP4 videos. Future source snapshots also include the CUDA loader/model-construction source and scene/profile/runtime assets, with SHA-256 hashes, to avoid the incomplete historical provenance encountered in the seed audit. Weights are not copied into episode snapshots. `--image-transform auto` follows the profile; manual alternatives are `native`, `mirror_x`, `rotate_180`. The default profile is `suction_upright`; `legacy`, `libero`, `suction_refined` and `suction_rgb256` reproduce earlier ablations.
+For original CPU-versus-CUDA checks, `tools/check_policy_parity.py --prepare-only` saves exact CUDA noise before `tools/check_policy_parity.py` runs the CPU reference. Release other full model processes first to fit system RAM. `tools/audit_attention_numerics.py` changes attention arithmetic only inside its diagnostic process.
 
-## Retained assets
-
-| Component | Source/version | Local location |
-| --- | --- | --- |
-| OpenPI | `215abfb217dbac7d5f1273282331b9b1866c0479` | `vendor/openpi` |
-| UR description | `d4042c1f5123c86645cc5dbd650b4f461f697ee9` | `vendor/ur_description` |
-| Official checkpoint | `gs://openpi-assets/checkpoints/pi05_libero` | `models/pi05_libero` |
-| Converted bf16 checkpoint | upstream layout conversion, no training | `models/pi05_libero_torch` |
-| Tokenizer | official PaliGemma tokenizer | `models/cache/big_vision/paligemma_tokenizer.model` |
-| Controller/camera reference | robosuite v1.4.1 | `vendor/reference` |
-
-Original checkpoint files occupy about 12.4 GB; the converted bf16 version occupies another 6.7 GB. Conversion/loading avoid allocating two full models simultaneously. One embedding tensor exceeds the nominal shard size and has its own 1.05 GB shard. See `download_manifest.json`, `scene_manifest.json` and run reports for provenance.
-
-The GPU loader validates all parameter devices as `cuda:0`. Compilation is disabled on this Windows installation; inference uses native PyTorch CUDA. Reproduction tools: `tools/validate_cuda.py`, `tools/audit_adapter.py`, `tools/probe_policy_failure.py`, `tools/summarize_episodes.py`. The former RGB helper and its audit/replay tools have been removed; their historical results remain in `runs/` and the archived notes.
-
-`--policy-noise-seed` is supported for local CUDA inference; omitting it retains the prior behavior where scene and policy sampling use the same seed. `tools/diagnose_seeds.py` reproduces saved-input and scene/noise cross checks into a new reproduction directory; `tools/audit_policy_adaptation.py` runs the predeclared adapter/extra-seed audit described in [the seed diagnosis](seed-diagnosis.md). Use fresh output directories rather than overwriting recorded evidence.
-
-On this hybrid laptop, create the first OpenGL context **before importing Torch** to match standalone rendering. `tools/run_scenarios.py` and the seed tools do this with `render_runtime.graphics_before_cuda()`. Otherwise importing Torch first can select NVIDIA rendering instead of Intel Arc Pro, changing RGB observations despite identical MuJoCo state. Policy inference stays on RTX 4070 in either case. Each new episode records `render_backend`; compare it along with source/configuration hashes. This ordering fixes the known adapter switch, but does not guarantee bit-exact rendered pixels throughout an episode.
-
-`reference_scale_audit` is an experimental ablation profile with no upright guard or extra Cartesian norm clipping. It is not a replacement default or a reproduction of Franka controller dynamics. To compare the original JAX and converted CUDA policy on fixed saved inputs/noise, run `python tools/check_policy_parity.py --prepare-only` first, then `python tools/check_policy_parity.py`. Run the CPU reference after releasing the full GPU-model process to fit system RAM.
-
-The expanded numerical comparison currently fails its declared tolerance on seed 0; seeds 1/42 pass. See the seed diagnosis before interpreting CUDA as numerically interchangeable with the original CPU model. `python tools/audit_attention_numerics.py` reproduces the saved-input attention arithmetic ablation without modifying the default runtime or checkpoint.
+The [experiment archive](archive/seed-audit.md) records complete protocols and limitations. Commands in the [hybrid archive](archive/hybrid-control.md) describe removed code and are historical only.
