@@ -39,12 +39,14 @@ class SeededPolicy:
         return result
 
 
-def load_panda_policy(backend, seed=42):
+def load_panda_policy(backend, seed=42, checkpoint=None):
+    if checkpoint is not None and backend != "mlx":
+        raise ValueError("Custom checkpoints currently require --backend mlx; CUDA needs a matching PyTorch export")
     if backend == "mlx":
         from pi05_mlx import MLXPolicy
-        policy = MLXPolicy(seed=seed)
+        policy = MLXPolicy(checkpoint=checkpoint, seed=seed)
         metadata = dict(policy.metadata)
-        manifest_path = ROOT / "models/pi05_libero_mlx/manifest.json"
+        manifest_path = Path(metadata["checkpoint_path"]) / "manifest.json"
     elif backend == "cuda":
         import torch
         from pi05_torch import require_cuda

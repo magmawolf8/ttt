@@ -1,6 +1,8 @@
 # OpenPI model equations
 
-The MLX implementation in `pi05_mlx.py` follows the model equations and checkpoint
+The MLX implementation in `pi05_mlx.py`, the flow-matching objective in
+`train_panda_mlx.py`, and its reference check in `tools/check_mlx_training.py`
+follow the model equations and checkpoint
 layout in Physical Intelligence's OpenPI at revision
 `215abfb217dbac7d5f1273282331b9b1866c0479`:
 https://github.com/Physical-Intelligence/openpi

@@ -16,6 +16,8 @@ below for the runnable configuration and its remaining reliability limits.
 | [Panda with original suction cup](panda-suction-mlx.md) | Seven-value action adapter, matching tool point, original seal physics and validation |
 | [Architecture](architecture.md) | Policy/control interfaces, physics, and scoring |
 | [Post-training](post-training.md) | Demonstrations, training methods, checkpoint integration and evaluation |
+| [Local Panda post-training](panda-post-training.md) | MLX action-expert fine-tuning, suction demonstrations and training validation |
+| [Pilot pickup diagnosis](panda-pickup-diagnosis.md) | Measured cup gap, successful expert replay and incorrect learned descent |
 | [Results](results.md) | Current evidence, video, and limitations |
 | [Evidence](evidence/index.md) | Included measurements and provenance |
 | [Seed audit](archive/seed-audit.md) | Detailed rendering, sampling, adapter, and numerical diagnosis |

@@ -108,6 +108,28 @@ assert not any(k == 'mlx' or k.startswith('mlx.') or k == 'pi05_mlx' for k in sy
             with self.assertRaisesRegex(RuntimeError, "bfloat16"):
                 require_cuda()
 
+    def test_custom_mlx_bundle_is_actually_selected(self):
+        with tempfile.TemporaryDirectory() as directory:
+            checkpoint = Path(directory)
+            (checkpoint / "manifest.json").write_text('{"test":true}')
+            native = RecordingPolicy()
+            native.metadata = {"checkpoint_path":str(checkpoint), "engine":"mlx", "finetuning":{"selected_step":20}}
+            module = types.ModuleType("pi05_mlx")
+            calls = []
+            def factory(*, checkpoint, seed):
+                calls.append((checkpoint, seed))
+                return native
+            module.MLXPolicy = factory
+            with patch.dict(sys.modules, {"pi05_mlx":module}):
+                policy = load_panda_policy("mlx", seed=5, checkpoint=checkpoint)
+            self.assertEqual(calls, [(checkpoint, 5)])
+            self.assertEqual(policy.metadata["finetuning"]["selected_step"], 20)
+            self.assertEqual(len(policy.metadata["checkpoint_manifest_sha256"]), 64)
+
+    def test_mlx_checkpoint_cannot_silently_load_original_cuda_weights(self):
+        with self.assertRaisesRegex(ValueError, "matching PyTorch export"):
+            load_panda_policy("cuda", checkpoint="runs/trained/checkpoint")
+
 
 if __name__ == "__main__":
     unittest.main()

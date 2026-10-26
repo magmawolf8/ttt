@@ -1,0 +1,197 @@
+{
+  "rollout": "runs/panda_sft_v1_candidate_eval/episode_000_seed_10100",
+  "demonstration": "datasets/panda_suction_sft_v1/validation_0000.npz",
+  "checkpoint": "runs/panda_sft_mlx_v1/checkpoint",
+  "scene_seed": 10100,
+  "recorded_policy_actions_executed_exactly": true,
+  "vacuum_commands_match_action_head": true,
+  "learned_rollout_diagnostics": {
+    "scene_seed": 10100,
+    "policy_noise_seed": 42,
+    "steps": 400,
+    "wall_seconds": 69.53760408284143,
+    "median_inference_s": 0.7675513954600319,
+    "initial": {
+      "t": 0.0,
+      "tcp_card_local_m": [
+        -0.07230159715555087,
+        0.05640199045343475,
+        0.22980064494176036
+      ],
+      "tcp_to_card_surface_m": 0.2335765365352809,
+      "card_clearance_m": 4.935733234869935e-05,
+      "cup_card_contact": false,
+      "cup_inside_card_footprint": false,
+      "normal_error_degrees": 2.699869328381916e-06,
+      "suction": false,
+      "attached": false,
+      "suction_state": "off",
+      "contact_dwell_s": 0.0,
+      "eef_m": [
+        0.44999999530176,
+        -2.219246175473446e-09,
+        0.23000000227603465
+      ],
+      "card_m_evaluator_only": [
+        0.41322880989382654,
+        -0.08400348668506699,
+        0.00019935733503822592
+      ]
+    },
+    "success": false,
+    "failure_category": "approach_or_alignment",
+    "criterion": "original suction attachment and lowest card point >=0.05m continuously for 2s",
+    "physics_steps": 10000,
+    "cup_card_contact_steps": 0,
+    "attachment_eligible_steps": 0,
+    "attached_steps": 0,
+    "minimum_tcp_to_card_surface_m": 0.02962584258151491,
+    "maximum_card_clearance_m": 5.0799671827451715e-05,
+    "maximum_continuous_valid_hold_s": 0.0,
+    "closest_approach": {
+      "t": 11.522000000000585,
+      "tcp_card_local_m": [
+        0.014038458252097569,
+        0.028348214234299098,
+        0.02977584258151491
+      ],
+      "tcp_to_card_surface_m": 0.02962584258151491,
+      "card_clearance_m": 5.0799072808002194e-05,
+      "cup_card_contact": false,
+      "cup_inside_card_footprint": true,
+      "normal_error_degrees": 0.50921635111312,
+      "suction": true,
+      "attached": false,
+      "suction_state": "attempting",
+      "contact_dwell_s": 0.0,
+      "eef_m": [
+        0.44416810908032894,
+        -0.09059585550613873,
+        0.029976641655719866
+      ],
+      "card_m_evaluator_only": [
+        0.41322880990070626,
+        -0.0840034866895718,
+        0.00020079907370523128
+      ]
+    },
+    "suction_events": []
+  },
+  "scripted_demonstration_replay": {
+    "frames": 239,
+    "exact_observation_matches": {
+      "image": 239,
+      "wrist_image": 239,
+      "state": 239
+    },
+    "maximum_state_error": 0.0,
+    "success": true,
+    "failure_category": null,
+    "criterion": "original suction attachment and lowest card point >=0.05m continuously for 2s",
+    "physics_steps": 5975,
+    "cup_card_contact_steps": 2931,
+    "attachment_eligible_steps": 2931,
+    "attached_steps": 2912,
+    "minimum_tcp_to_card_surface_m": 0.0,
+    "maximum_card_clearance_m": 0.11925659291824878,
+    "maximum_continuous_valid_hold_s": 4.161999999999764,
+    "closest_approach": {
+      "t": 6.101999999999528,
+      "tcp_card_local_m": [
+        -0.00010219665967599479,
+        6.255113019344277e-05,
+        0.00014798886250572894
+      ],
+      "tcp_to_card_surface_m": 0.0,
+      "card_clearance_m": 2.095661672487452e-05,
+      "cup_card_contact": true,
+      "cup_inside_card_footprint": true,
+      "normal_error_degrees": 0.00756636546998282,
+      "suction": true,
+      "attached": false,
+      "suction_state": "attempting",
+      "contact_dwell_s": 0.014,
+      "eef_m": [
+        0.4132652234180701,
+        -0.08389028104020413,
+        0.0003207028131576098
+      ],
+      "card_m_evaluator_only": [
+        0.41322988164617275,
+        -0.0840047705452066,
+        0.00017271424276585963
+      ]
+    }
+  },
+  "teacher_forced_by_phase": {
+    "approach": {
+      "actions": 55,
+      "xyz_mae": [
+        0.07201418043537573,
+        0.062236919558861035,
+        0.05818263319405642
+      ],
+      "target_mean_dz": -0.22920563898303292,
+      "predicted_mean_dz": -0.251036629893563,
+      "predicted_up_fraction": 0.0,
+      "vacuum_sign_agreement": 0.9090909090909091
+    },
+    "descend": {
+      "actions": 50,
+      "xyz_mae": [
+        0.017698502094717697,
+        0.016898072896674422,
+        0.12068570581264794
+      ],
+      "target_mean_dz": -0.09977233755402266,
+      "predicted_mean_dz": 0.008717806339263915,
+      "predicted_up_fraction": 0.6,
+      "vacuum_sign_agreement": 1.0
+    },
+    "seal": {
+      "actions": 25,
+      "xyz_mae": [
+        0.017428534973878414,
+        0.01701822690665722,
+        0.06876350371254375
+      ],
+      "target_mean_dz": 0.0016055658637196756,
+      "predicted_mean_dz": 0.06917465209960938,
+      "predicted_up_fraction": 1.0,
+      "vacuum_sign_agreement": 1.0
+    },
+    "lift": {
+      "actions": 60,
+      "xyz_mae": [
+        0.01661306477811498,
+        0.02151528946124017,
+        0.11162418462336063
+      ],
+      "target_mean_dz": 0.1511995319277048,
+      "predicted_mean_dz": 0.03957534730434418,
+      "predicted_up_fraction": 0.6666666666666666,
+      "vacuum_sign_agreement": 1.0
+    },
+    "hold": {
+      "actions": 49,
+      "xyz_mae": [
+        0.011489677866829508,
+        0.017039479117315473,
+        0.061770619340157804
+      ],
+      "target_mean_dz": 0.006181284746960547,
+      "predicted_mean_dz": 0.009154814846661627,
+      "predicted_up_fraction": 0.6938775510204082,
+      "vacuum_sign_agreement": 1.0
+    }
+  },
+  "batched_vs_individual_velocity_max_abs": 3.814697265625e-06,
+  "batching_check_passed": true,
+  "audit_source_sha256": "dfbc88ba99c257214c41d47ba6998caf75d5e01213a395d68712ba95bc1acf10",
+  "date": "2026-10-25",
+  "conclusions": {
+    "confirmed": "No physical contact; incorrect learned descent/lift behavior. Same-placement expert replay succeeds with identical observations.",
+    "not_established": "This audit does not prove that episode count alone, frozen vision weights, or phase ambiguity is the sole cause of the learning failure.",
+    "earlier_evaluation": "Interrupted after one completed development episode; later incomplete recording is not scored."
+  }
+}

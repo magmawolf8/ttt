@@ -62,25 +62,29 @@ def verify_scene(env):
     return checks
 
 
-def dashboard(obs, sample, success, seed, latency, tool="parallel", backend="mlx"):
-    frame = Image.new("RGB", (960, 640), "#111821")
+def dashboard(obs, sample, success, seed, latency, tool="parallel", backend="mlx", finetuned=False):
+    frame = Image.new("RGB", (960, 672), "#111821")
     draw = ImageDraw.Draw(frame)
     font = ImageFont.load_default(size=19)
     small = ImageFont.load_default(size=16)
-    draw.text((16, 12), f"Pretrained pi0.5 / {backend.upper()} | Panda in the original card scene", font=font, fill="white")
+    label = "Fine-tuned" if finetuned else "Pretrained"
+    draw.text((16, 12), f"{label} pi0.5 / {backend.upper()} | Panda in the original card scene", font=font, fill="white")
     description = "Original suction cup | Close = vacuum ON; open = OFF" if tool == "suction" else "Physical parallel gripper | No attachment assist"
     draw.text((16, 45), "Pick up the face-down card. | " + description, font=small, fill="#91d9ff")
     for key, size, xy in [("agentview_image", 512, (16, 86)), ("robot0_eye_in_hand_image", 384, (560, 86))]:
         image = np.ascontiguousarray(obs[key][::-1, ::-1])
         frame.paste(Image.fromarray(image).resize((size, size)), xy)
     draw.text((560, 481), f"Seed {seed} | {sample['t']:.2f} simulated seconds", font=small, fill="white")
-    draw.text((560, 507), f"Card clearance: {1000 * sample['card_clearance_m']:.1f} mm", font=small, fill="white")
+    draw.text((560, 507), f"Card lift above table: {1000 * sample['card_clearance_m']:.1f} mm", font=small, fill="white")
+    gap = sample["tcp_to_card_surface_m"] if tool == "suction" else sample["finger_to_card_distance_m"]
+    gap_label = "Cup-to-card gap" if tool == "suction" else "Finger-to-card distance"
+    draw.text((560, 533), f"{gap_label}: {1000 * gap:.1f} mm", font=small, fill="#ffd18a")
     status = f"Vacuum: {'ON' if sample['suction'] else 'OFF'} | Attached: {sample['attached']}" if tool == "suction" else f"Both fingers contacting: {sample['bilateral_grasp']}"
-    draw.text((560, 533), status, font=small, fill="white")
-    draw.text((560, 559), f"Inference: {latency:.2f}s / chunk", font=small, fill="white")
-    draw.text((560, 585), "SUCCESS" if success else "Pickup not yet achieved", font=font,
+    draw.text((560, 559), status, font=small, fill="white")
+    draw.text((560, 585), f"Inference: {latency:.2f}s / chunk", font=small, fill="white")
+    draw.text((560, 615), "SUCCESS" if success else "Pickup not yet achieved", font=font,
               fill="#7bffad" if success else "#91d9ff")
-    draw.text((16, 615), "Success: physical grasp + lowest card point at least 50 mm above table for 2 seconds.", font=small, fill="#a9b3c2")
+    draw.text((16, 647), "Success: physical grasp + lowest card point at least 50 mm above table for 2 seconds.", font=small, fill="#a9b3c2")
     return np.asarray(frame)
 
 
@@ -91,11 +95,14 @@ def main(argv=None, default_backend=None):
     parser.add_argument("--tool", choices=["suction", "parallel"], default="suction")
     parser.add_argument("--seeds", type=int, nargs="+", default=[42, 43, 44])
     parser.add_argument("--policy-noise-seed", type=int, default=42)
+    parser.add_argument("--checkpoint", type=Path, help="MLX checkpoint bundle, including its own normalizer and provenance")
     parser.add_argument("--seconds", type=float, default=20.)
     parser.add_argument("--replan-steps", type=int, default=5)
     parser.add_argument("--viewer", action="store_true", help="On macOS, launch using mjpython")
     parser.add_argument("--output-dir", type=Path)
     args = parser.parse_args(argv)
+    if args.checkpoint is not None and args.backend != "mlx":
+        parser.error("--checkpoint currently requires --backend mlx")
     steps = round(args.seconds * 20)
     if steps <= 0 or not np.isclose(steps / 20, args.seconds) or not 1 <= args.replan_steps <= 10:
         parser.error("Use a positive multiple of 0.05 seconds and 1–10 replan steps")
@@ -139,8 +146,11 @@ def main(argv=None, default_backend=None):
         env.sim.render(camera_name="agentview", width=224, height=224)
         from render_runtime import current_render_backend
         report["graphics"] = current_render_backend()
-        policy = load_panda_policy(args.backend, seed=args.policy_noise_seed)
+        policy = load_panda_policy(args.backend, seed=args.policy_noise_seed, checkpoint=args.checkpoint)
         report["model"] = policy.metadata
+        finetuned = "finetuning" in policy.metadata
+        report["training_performed"] = finetuned
+        report["policy"] = "finetuned_pi05_panda_suction" if finetuned else "pretrained_pi05_libero"
         report["checkpoint_manifest_sha256"] = policy.metadata["checkpoint_manifest_sha256"]
         if args.tool == "suction":
             report["suction_config"] = env.suction_tool.suction_config
@@ -175,7 +185,7 @@ def main(argv=None, default_backend=None):
             chunk = 0
             began = time.monotonic()
             with imageio.get_writer(episode / "rollout.mp4", fps=20, macro_block_size=1) as video:
-                first_frame = dashboard(obs, initial, False, seed, 0., args.tool, args.backend)
+                first_frame = dashboard(obs, initial, False, seed, 0., args.tool, args.backend, finetuned)
                 Image.fromarray(first_frame).save(episode / "initial.png")
                 video.append_data(first_frame)
                 while len(commands) < steps:
@@ -194,7 +204,7 @@ def main(argv=None, default_backend=None):
                         sample = diagnostics.snapshot(env)
                         sample.update(step=len(commands), chunk=chunk, action_in_chunk=index, action=action.tolist())
                         commands.append(sample)
-                        frame = dashboard(obs, sample, diagnostics.maximum_hold >= 2., seed, latency, args.tool, args.backend)
+                        frame = dashboard(obs, sample, diagnostics.maximum_hold >= 2., seed, latency, args.tool, args.backend, finetuned)
                         video.append_data(frame)
                         if viewer is not None:
                             viewer.sync()

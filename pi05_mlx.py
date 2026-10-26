@@ -52,8 +52,9 @@ def rope(x, positions):
 
 
 class Pi05MLX:
-    def __init__(self, weights):
+    def __init__(self, weights, eager=True):
         self.weights = weights
+        self.eager = eager
 
     def w(self, name, layer=None):
         value = self.weights[name]
@@ -85,7 +86,8 @@ class Pi05MLX:
                            self.w(block + "LayerNorm_1/bias", i))
             y = nn.gelu_approx(self.dense(y, block + "MlpBlock_0/Dense_0", i))
             x = x + self.dense(y, block + "MlpBlock_0/Dense_1", i)
-            mx.eval(x)
+            if self.eager:
+                mx.eval(x)
         x = layer_norm(x, self.w(p + "Transformer/encoder_norm/scale"),
                        self.w(p + "Transformer/encoder_norm/bias"))
         return self.dense(x, p + "head")
@@ -126,7 +128,8 @@ class Pi05MLX:
             y = nn.gelu_approx(y @ gating[0]) * (y @ gating[1])
             y = y @ self.w(p + "mlp" + suffix + "/linear", i)
             x = x + (y if gate is None else y * gate)
-            mx.eval(x, k, v)
+            if self.eager:
+                mx.eval(x, k, v)
         x, _ = self.norm(x, "PaliGemma/llm/final_norm" + suffix, condition=condition)
         return x, caches
 
@@ -202,6 +205,8 @@ class MLXPolicy:
                          "source": self.manifest["source"], "quantized": False,
                          "parameter_count": self.manifest["parameter_count"],
                          "rng": "numpy-PCG64-normal-float32", "seed": seed}
+        if "finetuning" in self.manifest:
+            self.metadata["finetuning"] = self.manifest["finetuning"]
         print(f"MLX model ready in {time.monotonic() - start:.1f}s on {mx.default_device()}", flush=True)
 
     def reset_seed(self, seed):

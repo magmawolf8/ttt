@@ -42,7 +42,7 @@ Each episode records policy inputs/actions, bounded commands, evaluator telemetr
 ## Documentation
 
 - [Documentation index](docs/README.md), [setup](docs/setup.md), [architecture](docs/architecture.md), and [results](docs/results.md).
-- [Post-training the policy](docs/post-training.md): data preparation, training approaches, checkpoint integration and evaluation. Training support remains work to implement.
+- [Local Panda post-training](docs/panda-post-training.md): suction demonstrations, supervised MLX updates and checkpoint evaluation. [General adaptation guidance](docs/post-training.md) covers the original UR7e setup and further training options.
 - [Milestone specification](Board_Game_Robot_Milestone_1_Spec.docx).
 
 Documentation is Markdown, readable directly in the repository.

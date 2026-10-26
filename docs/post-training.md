@@ -1,10 +1,10 @@
 # Post-training the manipulation policy
 
-This guide describes the work needed to adapt pi0.5 to UR7e suction manipulation. The repository currently provides **card-only simulation, frozen-policy inference, diagnostics and a small scripted demonstration recorder**. It does not yet provide a validated training dataset, task-specific trainer or trained-policy deployment path. Read [setup](setup.md), the [simulation contracts](architecture.md) and [current results](results.md) first. Reliable learned pickup remains unachieved.
+This guide describes adaptation principles and the remaining work for the original UR7e setup. The newer **Panda with the original suction cup now has a local MLX supervised-training pipeline**, demonstration collector, checkpoint export and checkpoint-selectable runner. See [Panda local post-training](panda-post-training.md) for the runnable experiment and its limits. The older `collect_demos.py` and `run_policy.py` discussed below remain UR7e-specific.
 
 ## Choose the starting model and training environment
 
-Use the shared Linux GPU server or cloud allocation for training; keep the laptop for simulation, inspection and compatible inference. Pin the OpenPI revision, dependencies, CUDA stack and model configuration in a separate training environment. The Windows environment snapshot is not a portable training lock. Measure memory with the actual batch, image sizes, action horizon and optimizer before launching a long run.
+Upstream-supported training uses a Linux NVIDIA machine; there is no GPU server currently available in this workspace. The custom Panda action-expert experiment uses the local Apple GPU through MLX. Pin dependencies and model configuration for either route. The Windows environment snapshot is not a portable training lock. Measure memory with the actual batch, image sizes, action horizon and optimizer before launching a long run.
 
 OpenPI presents `pi05_base` as a fine-tuning starting point and `pi05_libero` as a LIBERO-adapted inference checkpoint. Its documented workflow converts data, defines training transforms/configuration, then serves the resulting checkpoint. These are useful upstream building blocks, not completed integration in this repository. [OpenPI training guide](https://github.com/Physical-Intelligence/openpi#fine-tuning-base-models-on-your-own-data).
 
@@ -64,4 +64,4 @@ Record source revision, dirty patch, dataset/configuration/checkpoint hashes, tr
 5. Evaluate unseen placements with scene and sampling seeds recorded separately. Report successful episodes, denominators, failure categories, interventions and representative failures alongside videos; repeat training seeds where feasible.
 6. Extend beyond cards only after generalizing object geometry, suction eligibility and lowest-point scoring. Current card variations do not constitute multi-object support.
 
-Keep a runnable command and artifact manifest for every completed stage. The immediate tasks are dataset validation, trainer configuration and checkpoint round-trip support; there is no ready project-specific training command yet.
+Keep a runnable command and artifact manifest for every completed stage. The Panda MLX pipeline implements dataset validation, supervised updates and checkpoint round-trip support; those integrations still need to be adapted before training/deploying on the original UR7e runtime.
