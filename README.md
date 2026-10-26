@@ -1,6 +1,6 @@
 # UR7e card manipulation in MuJoCo
 
-A UR7e suction tool, two RGB cameras, and frozen OpenPI pi0.5 inference on an RTX 4070 Laptop GPU. The instruction is `Pick up the face-down card.`
+A prototype toward a robot arm that manipulates board-game pieces: a UR7e suction tool, two RGB cameras, and frozen OpenPI pi0.5 inference on an RTX 4070 Laptop GPU. The current instruction is `Pick up the face-down card.`
 
 The minimum simulation-to-policy pipeline runs. Reliable pickup remains unachieved: none of the 14 controlled development episodes met the full hold criterion. The adapter is experimental; RGB centering and scripted lifting have been removed. See [current results](docs/results.md) and the [detailed seed audit](docs/archive/seed-audit.md).
 
@@ -18,10 +18,22 @@ Each episode records policy inputs/actions, bounded commands, evaluator telemetr
 
 ## Documentation
 
-- [Project overview](docs/index.md), [setup](docs/setup.md), [architecture](docs/architecture.md), and [results](docs/results.md).
-- [Documentation site instructions](docs/publishing.md): preview locally, rebuild, and enable GitHub Pages later.
+- [Documentation index](docs/README.md), [setup](docs/setup.md), [architecture](docs/architecture.md), and [results](docs/results.md).
+- [Post-training the policy](docs/post-training.md): data preparation, training approaches, checkpoint integration and evaluation. Training support remains work to implement.
 - [Milestone specification](Board_Game_Robot_Milestone_1_Spec.docx).
 
-Open `docs/index.html` directly, or run `python -m http.server 8000 --bind 127.0.0.1 --directory docs` and visit `http://127.0.0.1:8000`.
+Documentation is Markdown, readable directly in the repository.
 
-Model weights, downloaded dependencies, datasets and complete run outputs are ignored by Git. The documentation includes a small, attributed evidence bundle and one comparison video. No remote repository or public site has been configured.
+## Directory layout
+
+| Location | Contents |
+| --- | --- |
+| Root Python scripts | Simulator, scene generation, policy runtime, demonstration collection and validation entry points |
+| `tools/` | Setup helpers, policy conversion and experiment diagnostics |
+| `assets/` | Runtime scene, camera/controller profiles and suction configuration |
+| `docs/` | Markdown guides, historical findings, selected evidence and comparison media |
+| `end_effector/` | Separate end-effector design study and its supporting assets |
+| `models/`, `vendor/` | Downloaded checkpoints and dependencies; ignored by Git |
+| `datasets/`, `runs/` | Local demonstrations and complete experiment outputs; ignored by Git |
+
+Keep new experiments in fresh directories under `runs/` and datasets under `datasets/`. Preserve original observations and logs when summarizing results. The documentation includes a small, attributed evidence bundle; full recordings and checkpoints stay in local or shared artifact storage.

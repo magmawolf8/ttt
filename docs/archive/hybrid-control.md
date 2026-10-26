@@ -1,6 +1,6 @@
 # RGB centering, pickup and scene variations
 
-> Development record from 16 October 2026. Read the [current results](../results.md) for the project status. References marked **local artifact** identify files in the original workspace; they are not included in this site.
+> Development record from 16 October 2026. Read the [current results](../results.md) for the project status. References marked **local artifact** identify files in the original workspace; they are outside the compact evidence bundle.
 
 **Archived experiment.** The user subsequently requested removal of RGB centering and scripted lifting. `rgb_servo.py`, its audit/replay tools, the seal-switch accessor and all auxiliary CLI modes have been removed from the active runtime. The results and source snapshots below are retained as historical evidence, not current behavior. See [unassisted seed runs](unassisted-seeds.md) for the current pipeline. All commands and default choices below describe the historical implementation and no longer apply to the current runtime.
 

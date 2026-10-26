@@ -56,7 +56,7 @@ The setup script creates or reuses `simenv`, installs pinned dependencies, check
 | Checkpoint | `gs://openpi-assets/checkpoints/pi05_libero` |
 | Controller/camera reference used in audits | robosuite v1.4.1 |
 
-`vendor/reference` contains development reference material in the original workspace; it is not populated by the bootstrap and is not needed by ordinary policy episodes. Some diagnostic tools also require the saved historical observations named in their source; the small site evidence bundle does not replace complete run outputs.
+`vendor/reference` contains development reference material in the original workspace; it is not populated by the bootstrap and is not needed by ordinary policy episodes. Some diagnostic tools also require the saved historical observations named in their source; the small documentation evidence bundle does not replace complete run outputs.
 
 ## Graphics and inference reproducibility
 

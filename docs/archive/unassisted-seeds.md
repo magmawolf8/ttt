@@ -1,6 +1,6 @@
 # Unassisted pi0.5 seed runs
 
-> Development record from 16 October 2026. Read the [current results](../results.md) for the project status. References marked **local artifact** identify files in the original workspace; they are not included in this site.
+> Development record from 16 October 2026. Read the [current results](../results.md) for the project status. References marked **local artifact** identify files in the original workspace; they are outside the compact evidence bundle.
 
 On 2026-10-16, the RGB centering and scripted seal/lift controller were removed at the user's request. The current execution path is frozen pi0.5 → bounded action adapter → MuJoCo. Historical hybrid results/source snapshots remain archived under `runs/` and [the earlier notes](hybrid-control.md).
 

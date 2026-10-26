@@ -16,10 +16,9 @@ Source: [controlled baseline measurements](evidence/controlled-baseline.json).
 
 ## Watch the controlled comparison
 
-<video controls preload="metadata" playsinline poster="media/seed-comparison.png" aria-label="Twenty-second comparison of four frozen-policy episodes">
-  <source src="media/seed-comparison.mp4" type="video/mp4">
-  Your browser cannot play the video. <a href="media/seed-comparison.mp4">Download the MP4.</a>
-</video>
+[![Four frozen-policy episodes](media/seed-comparison.png)](media/seed-comparison.mp4)
+
+[Open the 20-second comparison video](media/seed-comparison.mp4).
 
 The panels show scene/noise 0/0, 1/1, 42/42 and 42/0. The final combination forms valid attachments and briefly lifts the card about 67 mm; continuous attached clearance above 50 mm lasts only 0.222 seconds. Success requires two seconds. There is no auxiliary centering, vacuum latch or scripted lift.
 

@@ -1,6 +1,6 @@
 # Why seed 42 reaches the card and seeds 0/1 miss
 
-> Development record from 16 October 2026. Read the [current results](../results.md) for the project status. References marked **local artifact** identify files in the original workspace; they are not included in this site.
+> Development record from 16 October 2026. Read the [current results](../results.md) for the project status. References marked **local artifact** identify files in the original workspace; they are outside the compact evidence bundle.
 
 Investigation on 2026-10-16, after removal of RGB centering and scripted lifting. All new episodes use unassisted frozen pi0.5, 20 seconds / 400 commands / 80 CUDA calls, and unchanged weights. The default profile is `suction_upright`; an explicitly labelled adapter ablation is described below. No card pose enters policy/control. Card positions, segmentation visibility counts and success measurements below are offline evaluator data.
 

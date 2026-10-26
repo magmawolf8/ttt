@@ -23,8 +23,8 @@ This small bundle accompanies the development findings from **16 October 2026**.
 
 ## Provenance
 
-The [manifest](manifest.json) records every source path, byte count and SHA-256 digest. `python tools/build_docs.py --check` verifies the included files against that manifest without requiring the ignored `runs/` directory.
+The [manifest](manifest.json) records every source path, byte count and SHA-256 digest. Preserve the original bytes when copying or checking these files; line-ending conversion changes their hashes.
 
-The complete workspace retains additional videos, per-step telemetry, observation/action arrays and source snapshots. Those are not part of this site. The [archive](../archive/seed-audit.md) retains their relative paths as local artifact references.
+The complete workspace retains additional videos, per-step telemetry, observation/action arrays and source snapshots. Those are outside this compact evidence bundle. The [archive](../archive/seed-audit.md) retains their relative paths as local artifact references.
 
 The dataset is exploratory: all 14 controlled episodes failed the full pickup criterion, and some earlier comparisons were confounded by graphics startup or scene initialization. See [current results](../results.md) before interpreting the raw measurements.

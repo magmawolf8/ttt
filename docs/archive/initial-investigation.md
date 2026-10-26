@@ -1,6 +1,6 @@
 # Initial pipeline and frozen-policy investigation
 
-> Development record from 16 October 2026. Read the [current results](../results.md) for the project status. References marked **local artifact** identify files in the original workspace; they are not included in this site.
+> Development record from 16 October 2026. Read the [current results](../results.md) for the project status. References marked **local artifact** identify files in the original workspace; they are outside the compact evidence bundle.
 
 Recorded before the RGB intervention. The hybrid experiments are archived in [rgb-centering.md](hybrid-control.md). The later [seed/adaptation audit](seed-audit.md) found a graphics-startup confound, limited generalization beyond the original seed and a CUDA/JAX numerical-tolerance failure on another input; it qualifies the single-input and single-seed findings below. Setup/provenance is in [setup.md](../setup.md); interfaces and physics are in [architecture.md](../architecture.md).
 
