@@ -1,0 +1,5 @@
+# Add the native Panda benchmark to the prepared MLX environment (Python 3.12).
+-r requirements-mlx.txt
+-r requirements-panda.txt
+# Torch only reads upstream LIBERO initial states; all policy inference is MLX.
+torch==2.7.1

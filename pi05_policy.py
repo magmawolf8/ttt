@@ -1,6 +1,7 @@
 """Use official OpenPI model, checkpoint, and LIBERO transforms without training imports."""
 import os
 from pathlib import Path
+import sys
 import time
 
 ROOT = Path(__file__).resolve().parent
@@ -9,6 +10,13 @@ os.environ.setdefault("XLA_PYTHON_CLIENT_PREALLOCATE","false")
 
 
 def load_policy(checkpoint=None, backend="cuda"):
+    if backend == "mlx":
+        from pi05_mlx import MLXPolicy
+        return MLXPolicy(checkpoint=checkpoint)
+    if backend not in ("cuda", "cpu"):
+        raise ValueError(f"Unknown backend {backend}")
+    # Use the pinned source without installing OpenPI's training dependencies.
+    sys.path.insert(0, str(ROOT / "vendor/openpi/src"))
     import jax
     import jax.numpy as jnp
     from openpi.models import model as model_module

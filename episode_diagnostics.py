@@ -91,7 +91,7 @@ class EpisodeDiagnostics:
         return report
 
 
-def annotate_video_frame(external,base,wrist,sample,chunk_latency,duration_s=20,image_transform="native"):
+def annotate_video_frame(external,base,wrist,sample,chunk_latency,duration_s=20,image_transform="native",policy_label="pi0.5"):
     frame=Image.new("RGB",(960,608),"#111821")
     frame.paste(Image.fromarray(external),(16,80))
     frame.paste(Image.fromarray(base),(720,80))
@@ -103,7 +103,7 @@ def annotate_video_frame(external,base,wrist,sample,chunk_latency,duration_s=20,
         small=ImageFont.truetype(font_path,17)
     except OSError:
         large=small=ImageFont.load_default()
-    draw.text((16,9),"pi0.5 on RTX 4070 | UR7e card pickup",font=large,fill="white")
+    draw.text((16,9),f"{policy_label} | UR7e card pickup",font=large,fill="white")
     status=f"t = {sample['t']:05.2f} / {duration_s:.2f} s     Vacuum: {'ON' if sample['suction'] else 'OFF'}     Attached: {'YES' if sample['attached'] else 'NO'}"
     draw.text((16,43),status,font=small,fill="#91d9ff")
     draw.text((720,57),"External policy camera",font=small,fill="white")

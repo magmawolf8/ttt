@@ -10,11 +10,17 @@ from safetensors import safe_open
 ROOT=Path(__file__).resolve().parent
 
 
+def require_cuda():
+    if not torch.cuda.is_available():
+        raise RuntimeError("CUDA is unavailable. Use an NVIDIA GPU and the CUDA PyTorch environment from setup_panda_cuda.py.")
+    if not torch.cuda.is_bf16_supported(including_emulation=False):
+        raise RuntimeError("This checkpoint runtime requires native NVIDIA bfloat16 support (Ampere or newer).")
+
+
 def load_cuda_model():
+    require_cuda()
     from tools.convert_pi05_torch import build_meta_model
 
-    if not torch.cuda.is_available():
-        raise RuntimeError("CUDA is unavailable in this Python environment")
     destination=ROOT/"models/pi05_libero_torch"
     index_path=destination/"model.safetensors.index.json"
     if not index_path.exists():

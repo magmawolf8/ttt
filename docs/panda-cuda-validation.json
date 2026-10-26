@@ -1,0 +1,87 @@
+{
+  "date": "2026-10-25",
+  "host": "Apple M5 Max / macOS / Python 3.12.14",
+  "cuda_hardware_tested": false,
+  "cuda_pickup_success_established": false,
+  "cpu_contract_tests": {
+    "command": "python -m unittest discover -s tests -v",
+    "passed": 6,
+    "gpu_behavior_mocked": true,
+    "source_sha256": "00d6425732b846ebd98e0fba2570ee13c0b748d0fcdc84aac616fb5e4bfac92a"
+  },
+  "dependency_resolution": {
+    "passed": true,
+    "platform": "macOS (not a Linux/Windows wheel installation test)",
+    "installed_packages_changed": false,
+    "report": "runs/cuda_dependency_dry_run.json",
+    "report_sha256": "c6b098b0f9277fec32560047065723e182d1ed66c3f28af30e74885ba1d6832d"
+  },
+  "cuda_unavailable_cli_check": {
+    "passed": true,
+    "error": "RuntimeError: CUDA is unavailable. Use an NVIDIA GPU and the CUDA PyTorch environment from setup_panda_cuda.py.",
+    "report": "runs/panda_cuda_unavailable_check/results.json",
+    "report_sha256": "344ac243c8c8ec535f651689928b777ca354984de9591cd698fed6f8c6ef8bdd"
+  },
+  "mlx_full_regression": {
+    "run": "runs/panda_shared_runner_mlx_44_02",
+    "report_sha256": "309a0c00d5895eab63e8b967724f23e86965e809773cbd8300ea4ea21e5b9b5c",
+    "reference_episode": "runs/panda_suction_live_44/episode_000_seed_44",
+    "comparison": {
+      "actions": {
+        "chunks": 80,
+        "bit_identical": true
+      },
+      "noise": {
+        "chunks": 80,
+        "bit_identical": true
+      },
+      "observation": {
+        "chunks": 80,
+        "bit_identical": true
+      }
+    },
+    "success": true,
+    "scene_seed": 44,
+    "policy_noise_seed": 42,
+    "commands": 400,
+    "physics_steps": 10000,
+    "maximum_card_clearance_m": 0.288704191381425,
+    "maximum_continuous_valid_hold_s": 2.2959999999999687,
+    "checkpoint_manifest_sha256": "43c8c4cc8957be1f41974e6758284cb19fcf95dbc221ed850c88562e79d7d3dc",
+    "run_source_sha256": {
+      "run_panda_card.py": "22a9f0c572f8418197da32285fd31770fdb1fffc162e3bcf4899caab75fd4f5b",
+      "run_panda_card_mlx.py": "92af09510427544368b8ec23c98032fb7b971b1898c92a421bc02c6bf2d5f743",
+      "panda_policy.py": "c3ddf084090b240b75346363bdd54e88ead1e3a6c43623a756a4845baf4d10a2",
+      "panda_card_sim.py": "4f93a5c665bb34ca55ab32f9cd1425f4a432d8ccf01e08e8b7625145b07deeb5",
+      "panda_suction.py": "5cbcb55d2bb266cf9314e9a33ab607fc681ab9e0d7580957c09854884c3622dc",
+      "card_sim.py": "8508c60d9c9b0ea2259cab76e295c1528e13cc5fbb721e9ca854d08946275f1b",
+      "episode_diagnostics.py": "48e442ca35fe558504c4adce8b48cfa423eae71b5a1638504007c259fd331bb9",
+      "pi05_mlx.py": "67bd5b7247a9d3ec4a4a9db94c9da6a0319b564839d3448c61ab5560997046eb",
+      "pi05_policy.py": "76a2ab7f56e44a38db7ba001e5781463276736e9ba596d947ebf862e394d8449",
+      "pi05_torch.py": "08b55cf802a7e899e00c83468774474c623047c3a6fe46ec0a5616c939ea5a99",
+      "tools/convert_pi05_torch.py": "f4e90b84ac8f1bcb6256e5891ed40e6735681b6a0aa56d3a4527af71d6055fd5",
+      "libero_runtime.py": "6710df404dc75a40fce64d1d4acefcba64729f007a9a6cdc0d1e5507545d6eaf",
+      "render_runtime.py": "aad4fed44bde6907d05cdc2dc14c83c4ed1b2b0d300a2bab699e8fd520fc48c2",
+      "assets/scene.xml": "92e4f91504ed62977b4d2a72cf7ee2ae0e62190d4ea0a7282a39e69111ffab38",
+      "assets/card_back.png": "d05a8977c477df9af7b15506504ccf09824a0633330b1fce20cf3bd264c7a6da",
+      "assets/policy_profiles.json": "23d48bc8e644c7d2721d4407662b19f64b738fc31656b66cba49d95e300d9eaa",
+      "assets/runtime_config.json": "13e9a54cd84e2abb59b187a9757cbeb01a5009fa7bd871efd5e55bdfdf669c03"
+    }
+  },
+  "source_sha256": {
+    "run_panda_card.py": "22a9f0c572f8418197da32285fd31770fdb1fffc162e3bcf4899caab75fd4f5b",
+    "run_panda_card_mlx.py": "92af09510427544368b8ec23c98032fb7b971b1898c92a421bc02c6bf2d5f743",
+    "panda_policy.py": "86aa3a2f590fb2e64efbc14be86798e48bed8f748b4caa12cac801eb8cb139c9",
+    "pi05_policy.py": "76a2ab7f56e44a38db7ba001e5781463276736e9ba596d947ebf862e394d8449",
+    "pi05_torch.py": "08b55cf802a7e899e00c83468774474c623047c3a6fe46ec0a5616c939ea5a99",
+    "setup_panda_cuda.py": "c8e4463add431ffa6cbf6ff549fe578787a912b0423f4faf2e9ccabc0cdc144d",
+    "requirements-panda.txt": "dd7ec51c939c1a497bfdb51bf9d6636a9c717a097f1406fa73eadce0401fe35a",
+    "requirements-panda-cuda.txt": "74093fdb0ebc640c39680563824a05006eea9cb6b2e8dcb98edc904905a470a3",
+    "tests/test_panda_policy.py": "00d6425732b846ebd98e0fba2570ee13c0b748d0fcdc84aac616fb5e4bfac92a"
+  },
+  "limits": [
+    "CUDA uses the pre-existing pinned OpenPI PyTorch loader; GPU inference and Linux/Windows setup require validation on the target machine.",
+    "The MLX repeat is a regression check, not a new independent placement or a CUDA success.",
+    "First sandboxed MLX regression attempt failed at CoreGraphics connection creation before inference; GPU-enabled rerun completed."
+  ]
+}

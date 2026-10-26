@@ -1,0 +1,102 @@
+{
+  "date": "2026-10-25",
+  "hardware": "Apple M5 Max, 128 GB unified memory",
+  "checkpoint": "gs://openpi-assets/checkpoints/pi05_libero",
+  "model_weights_updated": false,
+  "training_performed": false,
+  "learned_policy_only": true,
+  "robot": "single Franka Panda with parallel-jaw gripper",
+  "task": "LIBERO-Spatial task 0: pick up the black bowl between the plate and the ramekin and place it on the plate",
+  "libero_revision": "f78abd68ee283de9f9be3c8f7e2a9ad60246e95c",
+  "versions": {
+    "mlx": "0.32.4",
+    "mujoco": "3.3.7",
+    "robosuite": "1.4.1",
+    "torch": "2.7.1",
+    "numpy": "1.26.4"
+  },
+  "successes": 3,
+  "completed_trials": 3,
+  "full_benchmark_evaluation": false,
+  "custom_card_task_solved": false,
+  "episodes": [
+    {
+      "trial": 0,
+      "initial_state_index": 0,
+      "policy_noise_seed": 42,
+      "success": true,
+      "steps": 112,
+      "simulated_seconds": 5.6,
+      "wall_seconds": 14.686645374866202,
+      "median_inference_s": 0.5085320831276476,
+      "run": "libero_mlx_panda_01",
+      "all_commands_match_saved_model_actions": true,
+      "target_bowl_max_center_lift_m": 0.11734496517773196,
+      "observations_verified_no_object_pose": true,
+      "render_backend": "robosuite GLFW",
+      "results_sha256": "0adcac531afd02a7649171044d40d76a0d4f8aa686d01eddf9cdcbcb6a721eb7",
+      "video_path": "runs/libero_mlx_panda_01/episode_000/rollout.mp4",
+      "video_sha256": "5ee474b3b848adb369bf0b19955fb8e18826d08b213a7a3b9441a9a2fb4fde24",
+      "checkpoint_manifest_sha256": "43c8c4cc8957be1f41974e6758284cb19fcf95dbc221ed850c88562e79d7d3dc",
+      "source_sha256": {
+        "run_libero_mlx.py": "565497fe4f593f0f3a027e590fb9db029b9b7b24242ed4887464191ea2979150",
+        "libero_runtime.py": "7b84e1e9a59c4ccb9ad323b2d40f98fd86e0ca807ac5672eca5e6ce96908546e",
+        "pi05_mlx.py": "67bd5b7247a9d3ec4a4a9db94c9da6a0319b564839d3448c61ab5560997046eb"
+      }
+    },
+    {
+      "trial": 0,
+      "initial_state_index": 1,
+      "policy_noise_seed": 43,
+      "success": true,
+      "steps": 111,
+      "simulated_seconds": 5.55,
+      "wall_seconds": 17.11960025015287,
+      "median_inference_s": 0.6002184159588069,
+      "run": "libero_mlx_panda_cgl",
+      "all_commands_match_saved_model_actions": true,
+      "target_bowl_max_center_lift_m": 0.11724076303461273,
+      "observations_verified_no_object_pose": true,
+      "render_backend": "mujoco.cgl.GLContext",
+      "results_sha256": "deb17ebefde6304713b720921bc2559fd215cacac1b55e9269f09aba2bfa6755",
+      "video_path": "runs/libero_mlx_panda_cgl/episode_000/rollout.mp4",
+      "video_sha256": "07432aef12e5c0d25db4e220378936bf085ef038f5051498f8a946c13052c06f",
+      "checkpoint_manifest_sha256": "43c8c4cc8957be1f41974e6758284cb19fcf95dbc221ed850c88562e79d7d3dc",
+      "source_sha256": {
+        "run_libero_mlx.py": "74bc608511802e91fe041e9ab9261929f6a42443f31dd0128ef5d5d447cef1db",
+        "libero_runtime.py": "af8507fb9c7eaa83dafeacf3a361634da73c6d2ac9f3c073e3c076b7cc48c103",
+        "pi05_mlx.py": "67bd5b7247a9d3ec4a4a9db94c9da6a0319b564839d3448c61ab5560997046eb"
+      }
+    },
+    {
+      "trial": 1,
+      "initial_state_index": 2,
+      "policy_noise_seed": 44,
+      "success": true,
+      "steps": 75,
+      "simulated_seconds": 3.75,
+      "wall_seconds": 11.815364334033802,
+      "median_inference_s": 0.6405889170709997,
+      "run": "libero_mlx_panda_cgl",
+      "all_commands_match_saved_model_actions": true,
+      "target_bowl_max_center_lift_m": 0.12122076567109452,
+      "observations_verified_no_object_pose": true,
+      "render_backend": "mujoco.cgl.GLContext",
+      "results_sha256": "deb17ebefde6304713b720921bc2559fd215cacac1b55e9269f09aba2bfa6755",
+      "video_path": "runs/libero_mlx_panda_cgl/episode_001/rollout.mp4",
+      "video_sha256": "592bab522e39c1e6b4d9c07297383453896402bdc59dbc9850fa529c1c158c8c",
+      "checkpoint_manifest_sha256": "43c8c4cc8957be1f41974e6758284cb19fcf95dbc221ed850c88562e79d7d3dc",
+      "source_sha256": {
+        "run_libero_mlx.py": "74bc608511802e91fe041e9ab9261929f6a42443f31dd0128ef5d5d447cef1db",
+        "libero_runtime.py": "af8507fb9c7eaa83dafeacf3a361634da73c6d2ac9f3c073e3c076b7cc48c103",
+        "pi05_mlx.py": "67bd5b7247a9d3ec4a4a9db94c9da6a0319b564839d3448c61ab5560997046eb"
+      }
+    }
+  ],
+  "excluded_attempts": [
+    {
+      "path": "runs/libero_mlx_panda_02.log",
+      "reason": "AppKit abort before policy control; old robosuite GLFW offscreen context on mjpython worker thread. Fixed by native MuJoCo CGL context."
+    }
+  ]
+}

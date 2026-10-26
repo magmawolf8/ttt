@@ -1,0 +1,20 @@
+# Install the CUDA Torch wheel via setup_panda_cuda.py before this file.
+# No MLX dependency. JAX runs on CPU for OpenPI transforms / weight conversion.
+-r requirements-panda.txt
+torch==2.7.1
+torchvision==0.22.1
+transformers==4.53.2
+jax==0.5.3
+orbax-checkpoint==0.11.13
+flax==0.10.2
+ml_dtypes==0.5.4
+sentencepiece==0.2.2
+safetensors==0.8.0
+beartype==0.19.0
+jaxtyping==0.2.36
+einops==0.8.2
+augmax==0.4.1
+chex==0.1.90
+tqdm-loggable==0.4.1
+numpydantic==1.8.1
+fsspec[gcs]>=2024.6.0

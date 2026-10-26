@@ -1,0 +1,253 @@
+{
+  "date": "2026-10-25",
+  "purpose": "MLX integration validation, not a held-out pickup evaluation",
+  "checks": [
+    {
+      "path": "runs/mlx_smoke_42/mlx_parity.json",
+      "sha256": "9f9b5a7b4106d936c2c3d7fd65f7ba4b92b1048e87830f6b0ac3ba7cd4238beb",
+      "report": {
+        "reference": "pinned OpenPI JAX float32, original Orbax weights",
+        "candidate": "MLX float32",
+        "episode": "runs/mlx_smoke_42",
+        "thresholds": {
+          "relative_l2": 0.01,
+          "max_absolute_action": 0.01
+        },
+        "checks": [
+          {
+            "chunk": 0,
+            "relative_l2": 0.7327623725973109,
+            "max_absolute_action": 1.535435832711041,
+            "max_xyz_difference_m_before_bounds": 0.0007124616904437553,
+            "gripper_signs_match": false,
+            "reference_seconds": 5.133944749832153,
+            "passed": false
+          },
+          {
+            "chunk": 1,
+            "relative_l2": 0.009347693906047483,
+            "max_absolute_action": 0.031911694634825016,
+            "max_xyz_difference_m_before_bounds": 0.00019163062378168563,
+            "gripper_signs_match": true,
+            "reference_seconds": 4.657482125097886,
+            "passed": false
+          }
+        ],
+        "passed": false
+      }
+    },
+    {
+      "path": "runs/mlx_smoke_42_fp32_attention/mlx_parity.json",
+      "sha256": "8bd0afe375655803b3d6216c5506ae1fda58d2edd8114da721d0c971dd351012",
+      "report": {
+        "reference": "pinned OpenPI JAX float32, original Orbax weights",
+        "candidate": "MLX float32",
+        "episode": "runs/mlx_smoke_42_fp32_attention",
+        "thresholds": {
+          "relative_l2": 0.01,
+          "max_absolute_action": 0.01
+        },
+        "checks": [
+          {
+            "chunk": 0,
+            "relative_l2": 0.8075470579774159,
+            "max_absolute_action": 1.6786150705536007,
+            "max_xyz_difference_m_before_bounds": 0.000826440672415496,
+            "gripper_signs_match": false,
+            "reference_seconds": 5.560953167034313,
+            "passed": false
+          },
+          {
+            "chunk": 1,
+            "relative_l2": 0.001192055330011286,
+            "max_absolute_action": 0.001634693508535623,
+            "max_xyz_difference_m_before_bounds": 5.6933047354212896e-05,
+            "gripper_signs_match": true,
+            "reference_seconds": 5.007958707865328,
+            "passed": true
+          }
+        ],
+        "passed": false
+      }
+    },
+    {
+      "path": "runs/mlx_smoke_42_strict_fp32/mlx_parity.json",
+      "sha256": "518f98cf9bcbb35a5c9502c6a72c043da4a574701b4329f32cd2d6883bac3c98",
+      "report": {
+        "reference": "pinned OpenPI JAX float32, original Orbax weights",
+        "candidate": "MLX float32",
+        "episode": "runs/mlx_smoke_42_strict_fp32",
+        "thresholds": {
+          "relative_l2": 0.01,
+          "max_absolute_action": 0.01
+        },
+        "checks": [
+          {
+            "chunk": 0,
+            "relative_l2": 7.838249303381078e-05,
+            "max_absolute_action": 0.0001477409650088024,
+            "max_xyz_difference_m_before_bounds": 1.8356602787816811e-07,
+            "gripper_signs_match": true,
+            "reference_seconds": 5.395406708819792,
+            "passed": true
+          },
+          {
+            "chunk": 1,
+            "relative_l2": 1.064910390466912e-05,
+            "max_absolute_action": 3.5843356698705975e-05,
+            "max_xyz_difference_m_before_bounds": 2.3243114948279243e-07,
+            "gripper_signs_match": true,
+            "reference_seconds": 5.084636749932542,
+            "passed": true
+          }
+        ],
+        "passed": true
+      }
+    },
+    {
+      "path": "runs/mlx_live_42/mlx_parity.json",
+      "sha256": "e8c62a58dc839083fe704a5afdea63e168b5433eaa0d5ec7925be6839cbf3712",
+      "report": {
+        "reference": "pinned OpenPI JAX float32, original Orbax weights",
+        "candidate": "MLX float32",
+        "episode": "runs/mlx_live_42",
+        "thresholds": {
+          "relative_l2": 0.01,
+          "max_absolute_action": 0.01
+        },
+        "checks": [
+          {
+            "chunk": 0,
+            "relative_l2": 0.0002233081265714381,
+            "max_absolute_action": 0.00040930795675508946,
+            "max_xyz_difference_m_before_bounds": 5.55818086855897e-07,
+            "gripper_signs_match": true,
+            "reference_seconds": 14.037884125020355,
+            "passed": true
+          },
+          {
+            "chunk": 40,
+            "relative_l2": 1.1119661699927558e-06,
+            "max_absolute_action": 1.599627017956351e-06,
+            "max_xyz_difference_m_before_bounds": 7.998135089781755e-08,
+            "gripper_signs_match": true,
+            "reference_seconds": 7.181381999980658,
+            "passed": true
+          }
+        ],
+        "passed": true
+      }
+    }
+  ],
+  "resolution": "Disable MLX reduced-precision matrix operations (MLX_ENABLE_TF32=0 before import); explicit float32 attention.",
+  "checkpoint_manifest_sha256": "43c8c4cc8957be1f41974e6758284cb19fcf95dbc221ed850c88562e79d7d3dc",
+  "simulator": {
+    "controller": "scripted with card ground truth",
+    "simulation_profile": "suction_upright",
+    "checks": {
+      "no_contact_does_not_attach": true,
+      "release_seed_0": true,
+      "release_seed_1": true,
+      "release_seed_2": true,
+      "aligned_contact_attaches": true,
+      "gentle_lift_holds": true,
+      "overload_releases": true,
+      "edge_contact_does_not_attach": true
+    },
+    "trials": [
+      {
+        "attached": true,
+        "held_2s": true,
+        "minimum_clearance_m": 0.11654841481232996,
+        "events": [
+          {
+            "time": 4.659999999999709,
+            "event": "attached"
+          }
+        ],
+        "seed": 0
+      },
+      {
+        "attached": true,
+        "held_2s": true,
+        "minimum_clearance_m": 0.11667864739359528,
+        "events": [
+          {
+            "time": 4.669999999999708,
+            "event": "attached"
+          }
+        ],
+        "seed": 1
+      },
+      {
+        "attached": true,
+        "held_2s": true,
+        "minimum_clearance_m": 0.11654535633097904,
+        "events": [
+          {
+            "time": 4.659999999999709,
+            "event": "attached"
+          }
+        ],
+        "seed": 2
+      }
+    ],
+    "full_acceptance_evaluation": false
+  },
+  "final_episode": {
+    "episode": "runs/mlx_demo_42",
+    "status": "policy_controlling_robot",
+    "simulated_seconds": 20.0,
+    "wall_seconds": 56.02953041600995,
+    "policy_calls": 80,
+    "commands": 400,
+    "physics_steps": 10000,
+    "video_frames": 400,
+    "fps": 20.0,
+    "warm_median_chunk_seconds": 0.6474314169026911,
+    "mlx_peak_memory_bytes": 14353942748,
+    "task_success": false,
+    "failure_category": "approach_or_alignment",
+    "minimum_tcp_to_card_surface_m": 0.1905308710221218,
+    "raw_actions_verified": true,
+    "vacuum_signs_verified": true,
+    "mlx": {
+      "engine": "mlx",
+      "device": "Device(gpu, 0)",
+      "mlx_version": "0.32.4",
+      "mlx_enable_tf32": "0",
+      "metal": {
+        "device_name": "Apple M5 Max",
+        "max_recommended_working_set_size": 115448725504,
+        "memory_size": 137438953472,
+        "architecture": "applegpu_g17s",
+        "max_buffer_length": 86586540032,
+        "resource_limit": 499000
+      },
+      "precision": "float32",
+      "checkpoint_path": "/Users/cadenli/Documents/ChatGPT/ttt/models/pi05_libero_mlx",
+      "source": "gs://openpi-assets/checkpoints/pi05_libero",
+      "quantized": false,
+      "parameter_count": 3353433872,
+      "rng": "numpy-PCG64-normal-float32",
+      "seed": 42
+    },
+    "source_sha256": {
+      "run_policy.py": "b34a82305374b89bbd5f6d4a700499cc1e77ab298c47cdf8f6ff8699e8a08228",
+      "card_sim.py": "8508c60d9c9b0ea2259cab76e295c1528e13cc5fbb721e9ca854d08946275f1b",
+      "scene_scenarios.py": "bc13ad70848cddaf230c58f3b208aac1e5578c8bf68504b11e11376f7a0214a5",
+      "episode_diagnostics.py": "48e442ca35fe558504c4adce8b48cfa423eae71b5a1638504007c259fd331bb9",
+      "pi05_policy.py": "de0d7dc1292d0af48737d27436d040e69f09e0a67de4f692d5bc47051ba9f93e",
+      "pi05_torch.py": "08fc42a2e53962fc0c2b17d8d4f92d82d313118311a65543082b031428830ffc",
+      "pi05_mlx.py": "67bd5b7247a9d3ec4a4a9db94c9da6a0319b564839d3448c61ab5560997046eb",
+      "tools/convert_pi05_torch.py": "6ccf10818ece59379edac615a59bd1c5ce30090fc1c89e92d52401da20693ec5",
+      "tools/convert_pi05_mlx.py": "085cfde04c5dfc2275da1e1629aabba030edb5c187ddd7bb3ab5ccb3560adc71",
+      "render_runtime.py": "aad4fed44bde6907d05cdc2dc14c83c4ed1b2b0d300a2bab699e8fd520fc48c2",
+      "assets/policy_profiles.json": "23d48bc8e644c7d2721d4407662b19f64b738fc31656b66cba49d95e300d9eaa",
+      "assets/runtime_config.json": "13e9a54cd84e2abb59b187a9757cbeb01a5009fa7bd871efd5e55bdfdf669c03",
+      "assets/scene.xml": "92e4f91504ed62977b4d2a72cf7ee2ae0e62190d4ea0a7282a39e69111ffab38",
+      "assets/card_back.png": "d05a8977c477df9af7b15506504ccf09824a0633330b1fce20cf3bd264c7a6da"
+    },
+    "results_sha256": "0de1b26d267c0abcf2886c745a1dab6a20a513ad6d2f1b1c846624b10e7024f7"
+  }
+}

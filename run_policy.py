@@ -26,15 +26,16 @@ def main(argv=None, policy=None):
     parser.add_argument("--sim-profile",choices=["legacy","libero","suction_upright","suction_refined","suction_rgb256","reference_scale_audit"],default="suction_upright")
     parser.add_argument("--replan-steps",type=int,default=5,help="Maximum actions executed from each policy chunk")
     parser.add_argument("--seed",type=int,default=42)
-    parser.add_argument("--policy-noise-seed",type=int,default=None,help="Local CUDA sampling seed; defaults to the scene seed")
+    parser.add_argument("--policy-noise-seed",type=int,default=None,help="Local CUDA/MLX sampling seed; defaults to the scene seed (RNGs differ between backends)")
     parser.add_argument("--scenario",choices=SCENARIOS,default="baseline")
-    parser.add_argument("--backend",choices=["cuda","cpu"],default="cuda")
+    parser.add_argument("--backend",choices=["cuda","cpu","mlx"],default="cuda")
     parser.add_argument("--output-dir",type=Path,default=None)
+    parser.add_argument("--viewer",action="store_true",help="Show the live MuJoCo viewer; on macOS launch with mjpython")
     parser.add_argument("--server",default=None,help="Optional OpenPI websocket server hostname")
     parser.add_argument("--port",type=int,default=8000)
     args=parser.parse_args(argv)
-    if args.policy_noise_seed is not None and (args.server or args.backend!="cuda"):
-        parser.error("--policy-noise-seed requires local CUDA inference")
+    if args.policy_noise_seed is not None and (args.server or args.backend not in ("cuda", "mlx")):
+        parser.error("--policy-noise-seed requires local CUDA or MLX inference")
     noise_seed=args.seed if args.policy_noise_seed is None else args.policy_noise_seed
     steps=round(args.seconds*20) if args.seconds is not None else args.chunks*5
     if steps<=0 or (args.seconds is not None and not math.isclose(steps/20,args.seconds)):
@@ -44,7 +45,7 @@ def main(argv=None, policy=None):
     out=args.output_dir or ROOT/"runs"/("pi05_remote" if args.server else "pi05_"+args.backend+"_"+args.sim_profile)
     out.mkdir(parents=True,exist_ok=True)
     sources=["run_policy.py","card_sim.py","scene_scenarios.py","episode_diagnostics.py",
-             "pi05_policy.py","pi05_torch.py","tools/convert_pi05_torch.py","render_runtime.py",
+             "pi05_policy.py","pi05_torch.py","pi05_mlx.py","tools/convert_pi05_torch.py","tools/convert_pi05_mlx.py","render_runtime.py",
              "assets/policy_profiles.json","assets/runtime_config.json","assets/scene.xml",
              "assets/card_back.png"]
     source_dir=out/"source"
@@ -61,11 +62,20 @@ def main(argv=None, policy=None):
     video=None
     dashboard=None
     diagnostics=None
+    viewer=None
     try:
         sim=CardSim(args.seed,profile=args.sim_profile)
         report["scenario"]=configure_scenario(sim,args.scenario) if args.scenario!="baseline" else {"name":"baseline","initialization_only":True,"modifications":{}}
         args.image_transform=sim.policy_profile["image_transform"] if args.image_transform=="auto" else args.image_transform
         report.update(simulation_profile=args.sim_profile,policy_profile=sim.policy_profile,image_transform=args.image_transform)
+        if args.viewer:
+            import mujoco.viewer
+            viewer = mujoco.viewer.launch_passive(sim.model, sim.data)
+            viewer.cam.lookat[:] = [.35, 0, .25]
+            viewer.cam.distance = 1.5
+            viewer.cam.azimuth = 135
+            viewer.cam.elevation = -30
+            viewer.sync()
         report["controller_source"]="frozen_pi05"
         report["controller_uses_card_ground_truth"]=False
         report["suction_config"]=dict(sim.suction_config)
@@ -90,6 +100,11 @@ def main(argv=None, policy=None):
                 report["gpu"]=torch.cuda.get_device_name(0)
                 report["model_parameter_devices"]=sorted({str(p.device) for p in policy._model.parameters()})
                 torch.cuda.reset_peak_memory_stats()
+            elif args.backend == "mlx":
+                policy.reset_seed(noise_seed)
+                report["mlx"] = policy.metadata
+                report["mlx"]["seed"] = noise_seed
+                report["checkpoint_manifest"] = policy.manifest
         print("Policy loaded; starting closed-loop inference",flush=True)
         initial_qpos=sim.data.qpos[:6].copy()
         start=time.monotonic()
@@ -107,6 +122,8 @@ def main(argv=None, policy=None):
             if actions.ndim!=2 or actions.shape[1]!=7 or not np.isfinite(actions).all():
                 raise ValueError(f"Invalid policy action chunk {actions.shape}")
             np.save(out/f"actions_{chunk_id:03}.npy",actions)
+            if args.backend == "mlx" and not args.server:
+                np.save(out/f"noise_{chunk_id:03}.npy", policy.last_noise)
             before=sim.data.qpos[:6].copy()
             # Replan after 5 commands (0.25 simulated seconds).
             replan=args.replan_steps
@@ -115,13 +132,15 @@ def main(argv=None, policy=None):
             execute=min(replan,steps-sim.command_count,len(actions))
             for index,action in enumerate(actions[:execute]):
                 sim.apply_policy_action(action)
+                if viewer is not None:
+                    viewer.sync()
                 sample=diagnostics.record_command(sim,chunk_id,index)
                 external=sim.render(width=640,height=480)
                 video.append_data(external)
                 frame_obs=sim.observation(image_transform=args.image_transform)
                 base_view=frame_obs["observation/image"]
                 wrist_view=frame_obs["observation/wrist_image"]
-                dashboard.append_data(annotate_video_frame(external,base_view,wrist_view,sample,latency,steps/20,args.image_transform))
+                dashboard.append_data(annotate_video_frame(external,base_view,wrist_view,sample,latency,steps/20,args.image_transform,policy_label="pi0.5 / "+report["backend"].upper()))
             chunk={"index":chunk_id,"latency_seconds":latency,"action_shape":list(actions.shape),"executed":execute,"joint_displacement_rad":float(np.linalg.norm(sim.data.qpos[:6]-before)),"suction":sim.suction,"tcp_m":sim.position.tolist()}
             report["chunks"].append(chunk)
             print(json.dumps(chunk),flush=True)
@@ -133,6 +152,8 @@ def main(argv=None, policy=None):
         report.update(status="blocked",error_type=type(error).__name__,error=str(error),traceback=traceback.format_exc())
         print(report["traceback"],flush=True)
     finally:
+        if viewer is not None:
+            viewer.close()
         if video:
             video.close()
         if dashboard:
@@ -142,13 +163,16 @@ def main(argv=None, policy=None):
                 diagnostics.save(sim)
             sim.close()
         report["final_memory"]=psutil.virtual_memory()._asdict()
+        if args.backend == "mlx" and not args.server:
+            import mlx.core as mx
+            report["mlx_peak_memory_bytes"] = mx.get_peak_memory()
         if args.backend=="cuda" and not args.server:
             import torch
             if torch.cuda.is_available():
                 report["cuda_peak_allocated_bytes"]=torch.cuda.max_memory_allocated()
                 report["cuda_peak_reserved_bytes"]=torch.cuda.max_memory_reserved()
         (out/"results.json").write_text(json.dumps(report,indent=2))
-        print(json.dumps({k:v for k,v in report.items() if k not in ["traceback","interventions","chunks","initial_memory","final_memory"]},indent=2),flush=True)
+        print(json.dumps({k:v for k,v in report.items() if k not in ["traceback","interventions","chunks","initial_memory","final_memory","checkpoint_manifest"]},indent=2),flush=True)
     if report["status"]=="blocked":
         raise SystemExit(1)
 

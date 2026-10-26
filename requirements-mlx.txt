@@ -1,0 +1,20 @@
+# Native Apple Silicon runtime plus one-time Orbax checkpoint export.
+# Python 3.12; no Torch/JAX is imported during MLX inference.
+mlx==0.32.4
+mujoco==3.3.7
+numpy==1.26.4
+scipy==1.13.1
+pillow==13.0.0
+imageio==2.38.1
+imageio-ffmpeg==0.6.0
+psutil==7.2.2
+PyYAML==6.0.3
+sentencepiece==0.2.2
+safetensors==0.8.0
+dm-tree==0.1.10
+msgpack==1.2.3
+websockets==17.2
+jax==0.5.3
+orbax-checkpoint==0.11.13
+flax==0.10.2
+ml_dtypes==0.5.4

@@ -21,6 +21,7 @@ from safetensors.torch import save_file
 
 ROOT=Path(__file__).resolve().parents[1]
 sys.path.insert(0,str(ROOT))
+sys.path.insert(0,str(ROOT/"vendor/openpi/src"))
 from openpi.models import gemma
 from openpi.models import model as model_module
 from openpi.models.pi0_config import Pi0Config

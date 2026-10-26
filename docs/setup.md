@@ -1,5 +1,10 @@
 # Setup and reproduction
 
+For native Apple Silicon inference and the live MuJoCo viewer, use the separate
+[MLX setup guide](mlx.md). The Windows/CUDA environment below remains supported.
+For the Panda with the original suction cup on a new NVIDIA computer, use the
+[portable Panda CUDA setup](panda-cuda.md).
+
 ## Existing laptop environment
 
 The working installation is Windows with 16 GB RAM and an RTX 4070 Laptop GPU (8,188 MiB VRAM). Use the `simenv` conda environment, normally at `%USERPROFILE%\miniconda3\envs\simenv`.

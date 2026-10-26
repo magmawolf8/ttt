@@ -1,6 +1,8 @@
 __pycache__/
 *.py[cod]
 /.venv/
+/.venv-mlx/
+/.venv-cuda/
 /.pytest_cache/
 /.mypy_cache/
 /.ruff_cache/
